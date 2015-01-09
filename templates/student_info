@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Student Info. Portal{% endblock %}
+
+{% block content %}
+	<form>
+		Name:<br>
+		<input type="text" name="name"><br>
+		Father's  Name:<br>
+		<input type="text" name="fname"><br>
+		Address:<br>
+		<input type="text" name="address"><br>
+		Contact Number:<br>
+		<input type="text" name="contact"><br><br>
+		<input type="submit" value="Save" action="" method="POST">
+	</form>
+{% endblock %}

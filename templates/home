@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+	<p>
+		Welcome to the Center Evaluation System.
+		<br><br>
+		Please Choose your option:-<br><br>
+		<a href="student_info">Enter Student Information </a><br>
+		<a href="">Enter Center Info</a>
+	</p>
+{% endblock %}

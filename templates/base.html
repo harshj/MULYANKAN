@@ -1,0 +1,21 @@
+<! DOCTYPE HTML>
+<html>
+	<head>
+		<title>
+			{% block title %}{% endblock %}
+		</title>
+	</head>
+	<body>
+		{% load staticfiles %}
+
+		img src= " {% static "images/logo.jpg" %} "
+		<img src="../templates/univ.jpg" width="1200px" align="right">
+		<h2 align="center">CENTER ALLOCATION SYSTEM</h2>
+		<hr width="1310" size="2" noshade>
+		{% block content %}
+		
+		{% endblock %}
+		<hr width="1310" size="2" noshade>
+		Thanks for visiting.
+	</body>
+</html>
