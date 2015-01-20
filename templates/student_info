@@ -3,10 +3,16 @@
 {% block title %}Student Info. Portal{% endblock %}
 
 {% block content %}
-	<h3 align:"centre">Student Information</h3>
+	<h3>Student Information</h3>
 	
 	{% if success %}
 		<font color="green" font-size="5">Success!!!</font>
+	{% endif %}
+
+	{% if form.errors %}
+		<p style="color:red;">
+			Please correct the errors below.
+		</p>
 	{% endif %}
 
 	<form action="" method="POST"> 		
