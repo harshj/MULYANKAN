@@ -3,15 +3,21 @@
 {% block title %}Student Info. Portal{% endblock %}
 
 {% block content %}
-	<form>
+	<h3 align:"centre">Student Information</h3>
+	<form action="student_info/"> 		
 		Name:<br>
-		<input type="text" name="name"><br>
+		<input type="text" name="name" value = "{{ name }}"><br>
 		Father's  Name:<br>
-		<input type="text" name="fname"><br>
+		<input type="text" name="fname" value = "{{ fname }}" ><br>
 		Address:<br>
-		<input type="text" name="address"><br>
+		<input type="text" name="address" value = "{{ address }}"><br>
 		Contact Number:<br>
-		<input type="text" name="contact"><br><br>
-		<input type="submit" value="Save" action="" method="POST">
+		<input type="text" name="contact" value = "{{ contact }}"><br><br>
+		<input type="submit" value="Save" action="student_info_action" method="POST">
+	
+	<! GET:for non sensitive info.,passive data
+           POST: for sensitive info.,updating data
+           get not suitable for large amount of data and images etc.>
+
 	</form>
 {% endblock %}

@@ -4,7 +4,7 @@
 
 {% block content %}
 	<p>
-		Welcome to the Center Evaluation System.
+		Welcome to the Center Allocation System.
 		<br><br>
 		Please Choose your option:-<br><br>
 		<a href="student_info">Enter Student Information </a><br>
