@@ -9,11 +9,11 @@ def save(name,fname,mname,address,contact):
 	errors = []
 	path = os.curdir + os.sep + "system" + os.sep + "Student Information.xls"
 	if(os.path.exists(path)):
-		student = xlrd.open_workbook(path , formatting_info = True)
-		student_sh = student.sheet_by_index(0)
+		wb = xlrd.open_workbook(path , formatting_info = True)
+		sheet = wb.sheet_by_index(0)
 
-		for i in range(student_sh.ncols):
-			col_name = student_sh.cell_value(0,i)
+		for i in range(sheet.ncols):
+			col_name = sheet.cell_value(0,i)
 			if(col_name == 'Application #'):
 				APP_COL_NO = i
 			elif(col_name == 'Name'):
@@ -27,19 +27,19 @@ def save(name,fname,mname,address,contact):
 			elif(col_name == "Contact No."):
 				CON_COL_NO = i
 		
-		row = student_sh.nrows
-		app_no = student_sh.cell_value(row-1 , APP_COL_NO) + 1
-		student = copy(student) 
-		student_sh = student.get_sheet(0)
+		row = sheet.nrows
+		app_no = sheet.cell_value(row-1 , APP_COL_NO) + 1
+		wb = copy(wb) 
+		sheet = wb.get_sheet(0)
 		
-		student_sh.write(row , APP_COL_NO , app_no)
-		student_sh.write(row , NAME_COL_NO , name)
-		student_sh.write(row , FNAME_COL_NO , fname)
-		student_sh.write(row , MNAME_COL_NO , mname)
-		student_sh.write(row , ADD_COL_NO , address)
-		student_sh.write(row , CON_COL_NO , contact)
+		sheet.write(row , APP_COL_NO , app_no)
+		sheet.write(row , NAME_COL_NO , name)
+		sheet.write(row , FNAME_COL_NO , fname)
+		sheet.write(row , MNAME_COL_NO , mname)
+		sheet.write(row , ADD_COL_NO , address)
+		sheet.write(row , CON_COL_NO , contact)
 		
-		student.save(path)
+		wb.save(path)
 	else:
 		errors.append("File Not Found")
 	

@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from forms import Student_Info_Form
-from system.save_application import save
+from forms import student_info_form,centre_info_form
+import system.student_application 
+import system.centre_info
 import os
 
 def home(request):
@@ -11,31 +12,44 @@ def student_info(request):
 	success = False	
 	errors = []
 	if request.method == 'POST':
-		form = Student_Info_Form(request.POST)
+		form = student_info_form(request.POST)
 		if form.is_valid():
 			name = request.POST['name']
 			fname = request.POST['fname']
 			mname = request.POST['mname']
 			address = request.POST['address']
 			contact = request.POST['contact']
-			flag,error =  save(name,fname,mname,address,contact)
+			flag,error =  system.student_application.save(name,fname,mname,address,contact)
 			if flag == True :
 				if len(error) == 0:
 					success=True
-					form = Student_Info_Form
+					form = student_info_form
 				else:
-					return HttpResponse("%d errors occured" %len(error))
+					return HttpResponse("%d errors occured while saving.Please contact the site admin" %len(error))
 				
 			else:
-				form = Student_Info_Form(request.POST)
+				form = student_info_form(request.POST)
 
-			for e in error:
-				errors.append(e)
 	else:
-		form = Student_Info_Form
+		form = student_info_form
 	return render(request, 'student_info' , {'form':form , 'success':success , 'errors':errors})
 
 def centre_info(request):
-	return HttpResponse("This page is under development")
-
-
+	success = False
+	errors = []
+	if request.method == 'POST' :
+		form = centre_info_form(request.POST)
+		if form.is_valid():
+			cname = request.POST['cname']
+			caddress = request.POST['caddress']
+			capacity = request.POST['capacity']
+			flag,error = system.centre_info.save(cname,caddress,capacity)
+			if(flag == True):
+				if(len(error) == 0):	
+					success = True
+				else:
+					return HttpResponse("%d errors occurred while saving. Please contact the site admin" %len(error))
+	else:
+		errors.append("Request not POST!!!")
+		form = centre_info_form
+	return render(request , 'centre_info' , {'form':form , 'success':success , 'errors':errors})

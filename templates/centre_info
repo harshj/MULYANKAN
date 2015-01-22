@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Centre Info. Portal
+{% endblock %}
+
+{% block content %}
+	{% if success %}
+		<font color="green" font-size="5">Success!!!</font>
+	{% endif %}
+	
+	{% if form.errors %}
+		<font color="red" font-size="5">Please correct the errors!!!</font>
+	{% endif %}
+	
+	<form action="" method = "POST">	
+		{% csrf_token %}   <! for Cross Site Reference Forgeries >
+		{{ form }}
+		<input type="submit" value ="Submit">
+	</form>
+{% endblock %}

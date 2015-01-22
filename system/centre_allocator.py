@@ -33,5 +33,5 @@ student_sh.write(0 , ROLL_COL_NO , "Allotted Roll No.")
 for i in range(total_cand):
     student_sh.write(i+1 , ROLL_COL_NO , roll_nos[i])
 
-student.save("Roll Number Info.xls")
+student.save("Roll Number Information.xls")
 
