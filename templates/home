@@ -8,6 +8,6 @@
 		<br><br>
 		Please Choose your option:-<br><br>
 		<a href="student_info">Enter Student Information </a><br>
-		<a href="">Enter Center Info</a>
+		<a href="centre_info">Enter Centre Info</a>
 	</p>
 {% endblock %}

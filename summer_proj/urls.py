@@ -8,6 +8,7 @@ import views
 urlpatterns = patterns('',
 	url(r'^$', views.home),
 	url(r'student_info/' , views.student_info),
+	url(r'centre_info/' , views.centre_info),
     # Examples:
     # url(r'^$', 'summer_proj.views.home', name='home'),
     # url(r'^summer_proj/', include('summer_proj.foo.urls')),
