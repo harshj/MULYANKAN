@@ -1,7 +1,10 @@
 # Module to generate roll numbers according to the capacity of the centres.
 
 import xlrd
-centre = xlrd.open_workbook("Centre Information.xls")
+import os
+
+path = os.curdir + os.sep + "system" + os.sep + "Centre Information.xls"
+centre = xlrd.open_workbook(path)
 centre_sh = centre.sheet_by_index(0)
 
 def gen_roll_nos(total):

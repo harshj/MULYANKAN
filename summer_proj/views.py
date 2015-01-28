@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from forms import student_info_form,centre_info_form
 import system.student_application 
 import system.centre_info
+import system.roll_no_info
+import system.centre_allocator
 import os
 
 def home(request):
@@ -52,4 +54,14 @@ def centre_info(request):
 	else:
 		errors.append("Request not POST!!!")
 		form = centre_info_form
-	return render(request , 'centre_info' , {'form':form , 'success':success , 'errors':errors})
+	return render(request , 'centre_info' , {'form':form , 'success':success , 'errors':errors}
+)
+
+def roll_no_info(request):
+	data,success,errors = system.roll_no_info.show()
+	
+	return render(request , 'roll_no_info' , {'data':data , 'success':success , 'errors':errors})
+
+def centre_alloc(request):
+	success = system.centre_allocator.allocate()
+	return render(request, 'home' , {'success':success})

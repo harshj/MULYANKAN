@@ -7,8 +7,11 @@ import views
 
 urlpatterns = patterns('',
 	url(r'^$', views.home),
-	url(r'student_info/' , views.student_info),
-	url(r'centre_info/' , views.centre_info),
+	url(r'home/$', views.home),
+	url(r'student_info/$' , views.student_info),
+	url(r'centre_info/$' , views.centre_info),
+	url(r'centre_alloc/$' , views.centre_alloc),
+	url(r'roll_no_info/$' , views.roll_no_info),
     # Examples:
     # url(r'^$', 'summer_proj.views.home', name='home'),
     # url(r'^summer_proj/', include('summer_proj.foo.urls')),
