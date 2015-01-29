@@ -65,3 +65,9 @@ def roll_no_info(request):
 def centre_alloc(request):
 	success = system.centre_allocator.allocate()
 	return render(request, 'home' , {'success':success})
+
+def result_evaluator(request):
+	return HttpResponse("This page will be available soon!!!")
+
+def show_result(request):
+	return HttpResponse("This page will be available soon!!!")

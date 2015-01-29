@@ -12,6 +12,7 @@ urlpatterns = patterns('',
 	url(r'centre_info/$' , views.centre_info),
 	url(r'centre_alloc/$' , views.centre_alloc),
 	url(r'roll_no_info/$' , views.roll_no_info),
+	url(r'show_result/$' , views.show_result),
     # Examples:
     # url(r'^$', 'summer_proj.views.home', name='home'),
     # url(r'^summer_proj/', include('summer_proj.foo.urls')),
