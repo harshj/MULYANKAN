@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from forms import student_info_form,centre_info_form
+from forms import student_info_form,centre_info_form,result_eval_form
 import system.student_application 
 import system.centre_info
 import system.roll_no_info
 import system.centre_allocator
+import system.result_evaluator
 import os
 
 def home(request):
@@ -67,7 +68,9 @@ def centre_alloc(request):
 	return render(request, 'home' , {'success':success})
 
 def result_evaluator(request):
-	return HttpResponse("This page will be available soon!!!")
+        form = result_eval_form
+	return render(request, 'result_evaluator' , {'form' : form})
 
 def show_result(request):
-	return HttpResponse("This page will be available soon!!!")
+	data , success , errors = system.result_evaluator.show()
+	return render(request, 'show_result' , {'data' : data ,'success' : success ,'errors' : errors})

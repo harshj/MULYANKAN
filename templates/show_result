@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+Results
+{% endblock %}
+
+{% block content %}
+	{% if success%}
+		<table style="width:60%">
+		{% for i in data %}
+		<tr>
+			{%for j in i %}		
+				<td>{{j}}</td>
+			{% endfor %}
+		</tr>
+		{% endfor %}
+		</table>
+	{% else %}
+	Some error has occurred!!!
+	{% endif %}	
+
+{% endblock %}

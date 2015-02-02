@@ -21,13 +21,14 @@ def show():
 				numbers.append(i)
 			else:
 				strings.append(i)
-		for i in xrange(1,sh.nrows):
+		for i in xrange(0,sh.nrows):
 			for j in xrange(0 , sh.ncols):
 				temp = sh.cell_value(i,j)
-				if j in numbers:
-					temp=int(temp)
-				else:
-					temp = str(temp)
+				if i > 0:				
+					if j in numbers:
+						temp=int(temp)
+					else:
+						temp = str(temp)
 				row.append(temp)		
 			data.append(row)
 			row = []

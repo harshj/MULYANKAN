@@ -6,11 +6,15 @@
 	{% if success == False %}
 	<p stype=color:"red">An error has occurred.Please contact the site admin</p>
 	{% else %}
-		<ul>
+		<table style="width:60%">
 		{% for i in data %}
-			<li> {{ i }}</li>
+			<tr> 
+				{% for j in i %}
+					<td>{{ j }}</td>
+				{% endfor %}
+			</tr>
 		{% endfor %}
-		</ul>	
+		</table>	
 	{% endif %}
 
 {% endblock %}

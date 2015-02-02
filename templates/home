@@ -7,16 +7,15 @@
 		Welcome to the Center Allocation System.
 		<br><br>
 		Please Choose your option:-<br><br>
-		<a href="result_evaluator">Generate Result</a><br>
-		<a href="show_result">Show Results</b><br>
+		<a href="generate_result">Generate New Results</a><br>
+		<a href="show_result">View Last Results</a><br>
 		<a href="student_info">Enter Student Information </a><br>
 		<a href="centre_info">Enter Centre Info</a><br>
 		{% if success %}
 		<p style="color:green">Enrollment Numbers successfully generated!!!</p>
 		{% endif %}
 		<a href = "centre_alloc">Allocate Centres and Generate Enrollment Numbers</a><br>
-	        <a href = "roll_no_info">Show Allotted Enrollment Numbers</a><br
->
+	        <a href = "roll_no_info">Show Allotted Enrollment Numbers</a><br>
 	
 	</p>
 {% endblock %}

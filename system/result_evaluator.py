@@ -1,5 +1,8 @@
+# Module to evaluate results and save them to Result.xls 
 import string
 import xlwt
+import xlrd
+import os
 
 from data import get_data
 from result import get_result
@@ -32,4 +35,31 @@ def evaluate():
 
 	f.close()
 	wb.save("Result.xls")
-evaluate()
+
+#show function returns a list of list which contains all the data of Result.xls
+def show():
+	path = os.curdir + os.sep + 'system' + os.sep + 'Result.xls'
+	errors = []
+	if(os.path.exists(path)):
+		wb = xlrd.open_workbook(path)
+		sh = wb.sheet_by_index(0)
+		data = []
+		row = []
+		for i in xrange(0,sh.nrows):
+			for j in xrange(0,sh.ncols):
+				temp  = sh.cell_value(i,j)				
+				if i > 0 :
+					temp = int(temp)
+				
+				row.append(temp)
+			data.append(row)
+			row = []
+		
+		success = True
+					
+				
+	else:
+		errors.append("File Not Found!!!")
+		success = False
+	
+	return data,success,errors
