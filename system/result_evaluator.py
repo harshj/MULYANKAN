@@ -9,7 +9,9 @@ from result import get_result
 
 #ROLL_SIZE = 13
 
-def evaluate():  
+def evaluate():
+	success = False  
+	errors = []
 	wb = xlwt.Workbook()
 	ws = wb.add_sheet('result')
 	i = 0
@@ -18,8 +20,13 @@ def evaluate():
 	ws.write(i,2,'Incorrect')
 	ws.write(i,3,'Missed')
 	ws.write(i,4,'Marks Obtained')
-
-	f = open ("TEST1.txt")
+	
+	try:
+		path = os.curdir + os.sep + 'system' + os.sep
+		f = open (path + 'TEST1.txt' )
+	except IOError:
+		errors.append("File not found error!!!")
+		return False,errors
 
 	for line in f :
 	    i += 1
@@ -34,7 +41,10 @@ def evaluate():
             ws.write(i,4,score)
 
 	f.close()
-	wb.save("Result.xls")
+	wb.save(path + "Result.xls")
+	success = True
+	
+	return success , errors
 
 #show function returns a list of list which contains all the data of Result.xls
 def show():
@@ -63,3 +73,6 @@ def show():
 		success = False
 	
 	return data,success,errors
+
+#save function to save the incoming file to appropriate directories.
+#def save(f):

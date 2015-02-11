@@ -7,7 +7,7 @@
 		<font color="green" font-size="5">Success!!!</font>
 	{% endif %}
 	Please upload the appropriate files.<br><br>
-	<iform action=""  method = "POST">
+	<form action=""  method = "POST">
 		{% csrf_token %}
 		{{form}}
 		<input type = "Submit" value="Submit">

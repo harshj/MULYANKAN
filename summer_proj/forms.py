@@ -42,4 +42,4 @@ class centre_info_form(forms.Form):
 
 class result_eval_form(forms.Form):
                 response = forms.FileField(label = "Response File")
-		key = forms.FileField(label = "Key File" ,required="False" )
+		#key = forms.FileField(label = "Key File" ,required="False" )

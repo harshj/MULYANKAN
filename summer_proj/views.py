@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from forms import student_info_form,centre_info_form,result_eval_form
+from summer_proj.forms import student_info_form,centre_info_form,result_eval_form
 import system.student_application 
 import system.centre_info
 import system.roll_no_info
@@ -9,7 +9,7 @@ import system.result_evaluator
 import os
 
 def home(request):
-	return render (request, 'home' )
+	return render( request , 'home' )
 
 def student_info(request):
 	success = False	
@@ -53,7 +53,6 @@ def centre_info(request):
 				else:
 					return HttpResponse("%d errors occurred while saving. Please contact the site admin" %len(error))
 	else:
-		errors.append("Request not POST!!!")
 		form = centre_info_form
 	return render(request , 'centre_info' , {'form':form , 'success':success , 'errors':errors}
 )
@@ -65,12 +64,30 @@ def roll_no_info(request):
 
 def centre_alloc(request):
 	success = system.centre_allocator.allocate()
-	return render(request, 'home' , {'success':success})
+	return render(request, 'home' , {'alloc_success':success})
 
 def result_evaluator(request):
-        form = result_eval_form
-	return render(request, 'result_evaluator' , {'form' : form})
+	'''errors = []
+	success = False
+	if request.method == "POST":
+        	form = result_eval_form(request.POST,request.FILES)
+		if form.is_valid():
+		#	result_evaluator.save(request.FILES['response'])
+			flag,error = system.result_evaluator.evaluate()
+			if len(error) != 0 :
+				return HttpResponse("An error has occurred. Please Contact the site admin!!!")
+			if flag:
+				return redirect('show_result')
+	
+	else:
+		form = result_eval_form		
+	return render(request, 'result_evaluator' , {'form' : form , 'success' : success , 'errors' : errors})'''
 
+	success , errors = system.result_evaluator.evaluate()
+	if len(errors) != 0:
+		return HttpResponse("An error has occurres. Please contact the site admin!!!")
+	return render(request,'home',{'eval_success':success})
+	
 def show_result(request):
 	data , success , errors = system.result_evaluator.show()
 	return render(request, 'show_result' , {'data' : data ,'success' : success ,'errors' : errors})
