@@ -24,7 +24,7 @@ def gen_roll_nos(total):
     while(rolls_allotted < total):
         centre_code = int (centre_sh.cell_value(centre_no , CODE_COL_NO))
         centre_capacity = int (centre_sh.cell_value(centre_no , CAP_COL_NO))
-        if(total - rolls_allotted > centre_capacity):
+        if((total - rolls_allotted) > centre_capacity):
             allot = centre_capacity
         else:
             allot = total - rolls_allotted
@@ -34,7 +34,7 @@ def gen_roll_nos(total):
                 roll = int( str(centre_code) + roll_prog )
                 rolls.append(roll)
 
-        rolls_allotted = rolls_allotted + centre_capacity
+        rolls_allotted = rolls_allotted + allot #centre_capacity
         centre_no = centre_no + 1
 
     return rolls

@@ -1,3 +1,4 @@
+# Module to add a centre into the Centre Information.xls file
 
 import os
 import xlrd,xlwt
