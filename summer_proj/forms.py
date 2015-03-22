@@ -40,6 +40,7 @@ class centre_info_form(forms.Form):
 			raise forms.ValidationError("Enter a valid number!!!")
 		return capacity		
 
+
 class result_eval_form(forms.Form):
-                response = forms.FileField(label = "Response File")
-		#key = forms.FileField(label = "Key File" ,required="False" )
+	response = forms.FileField(label = "Response File", help_text = "(.txt) file")
+	key = forms.FileField(label = "Key File" , required="False" , help_text = '(.txt) file')

@@ -74,5 +74,3 @@ def show():
 	
 	return data,success,errors
 
-#save function to save the incoming file to appropriate directories.
-#def save(f):

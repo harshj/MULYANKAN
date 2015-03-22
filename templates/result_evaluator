@@ -3,11 +3,14 @@
 {% block title %}Result Evaluator{% endblock %}
 
 {% block content %}
+
 	{% if success %}
 		<font color="green" font-size="5">Success!!!</font>
 	{% endif %}
+
 	Please upload the appropriate files.<br><br>
-	<form action=""  method = "POST">
+
+	<form action=""  method = "POST" enctype="multipart/form-data">
 		{% csrf_token %}
 		{{form}}
 		<input type = "Submit" value="Submit">
