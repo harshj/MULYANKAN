@@ -8,8 +8,8 @@ from data import get_data
 from result import get_result
 
 #ROLL_SIZE = 13
-
-def evaluate():
+# questions: questions not to be evaluated.
+def evaluate(questions = []):
 	success = False  
 	errors = []
 	wb = xlwt.Workbook()
@@ -22,7 +22,7 @@ def evaluate():
 	ws.write(i,4,'Marks Obtained')
 	
 	try:
-		path = os.curdir + os.sep + 'system' + os.sep
+		path = os.curdir + os.sep + 'system' + os.sep + 'data' + os.sep
 		f = open (path + 'TEST1.txt' )
 	except IOError:
 		errors.append("File not found error!!!")
@@ -33,7 +33,7 @@ def evaluate():
 	    j = 5
 	    data = line[84:]
 	    roll_no , qpset , response = get_data(data)
-	    correct , wrong , missed , score = get_result(qpset , response)
+	    correct , wrong , missed , score = get_result(qpset , response , questions)
 	    ws.write(i,0,roll_no)
     	    ws.write(i,1,correct)
    	    ws.write(i,2,wrong)
@@ -48,7 +48,7 @@ def evaluate():
 
 #show function returns a list of list which contains all the data of Result.xls
 def show():
-	path = os.curdir + os.sep + 'system' + os.sep + 'Result.xls'
+	path = os.curdir + os.sep + 'system' + os.sep + 'data' + os.sep + 'Result.xls'
 	errors = []
 	if(os.path.exists(path)):
 		wb = xlrd.open_workbook(path)

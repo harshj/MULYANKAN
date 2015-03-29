@@ -1,12 +1,14 @@
 # Module to add a centre into the Centre Information.xls file
+# This module handles(saves/appends) the data entered in the centre_info form
 
 import os
 import xlrd,xlwt
 from xlutils.copy import copy
 
+
 def save(cname , caddress , capacity):
 	
-	path = os.curdir + os.sep + 'system' + os.sep + 'Centre Information.xls'
+	path = os.curdir + os.sep + 'system' + os.sep + "data" + os.sep + 'Centre Information.xls'
 	errors = []
 
 	if os.path.exists(path) :

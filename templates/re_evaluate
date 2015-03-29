@@ -1,0 +1,15 @@
+<! Template for "re_evaluate". >
+
+{% extends "base.html" %}
+
+{% block title %}Result Re-evaluate{% endblock %}
+
+{% block content %}
+
+	<form action = "" method = "POST">
+		{% csrf_token %}
+		{{ form }}
+		<input type = "Submit" value = "Re-Evaluate">				
+	</form>
+
+{% endblock %}

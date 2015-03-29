@@ -14,6 +14,7 @@ urlpatterns = patterns('',
 	url(r'roll_no_info/$' , views.roll_no_info),    #Views content of Roll No. Info.xls
         url(r'generate_result/$' , views.result_evaluator),#To generate new results
 	url(r'show_result/$' , views.show_result),      #To show the results.
+	url(r're_evaluate/$' , views.re_evaluate),	# To re-evaluate result based on questions r4emoved from evaluation
     # Examples:
     # url(r'^$', 'summer_proj.views.home', name='home'),
     # url(r'^summer_proj/', include('summer_proj.foo.urls')),

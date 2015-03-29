@@ -5,20 +5,39 @@
 {% block content %}
 	<h3>Student Information</h3>
 	
+	<font size='4'>Append data to existing file:</font><br><br>
+	
 	{% if success %}
-		<font color="green" font-size="5">Success!!!</font>
+		<font color="green" size="3">Append Success!!! Please ignore other errors.</font>
 	{% endif %}
-
-	{% if form.errors %}
-		<p style="color:red;">
-			Please correct the errors below.
-		</p>
+	
+	{% if upload_success == False and form.errors %}
+		<font color="red" font="3">Please correct the errors!!!</font>
 	{% endif %}
-
-	<form action="" method="POST"> 		
-		{% csrf_token %}
-		{{ form }}
-		<input type="submit" value="Submit" />
+	
+	<form action="" method = "POST">	
+		{% csrf_token %}   <! for Cross Site Reference Forgeries >
+		{{ form | linebreaksbr }}
+		<br><br>
+		<input type="submit" value ="Submit">
+	</form>
+	
+	<br>
+	<font size = '4'>OR Upload a file:</font> <br><br>
+	
+	{% if upload_success %}
+		<font color="green" size="3">File Upload Success!!! Please ignore other errors.</font>
+	{% endif %}
+	
+	{% if success == False and upload_form.errors %}
+		<font color="red" font="3">Please correct the errors!!!</font>
+	{% endif %}
+	
+	<form action = "" method = "POST" enctype="multipart/form-data">
+		{%  csrf_token %}
+		{{	upload_form | linebreaks}}
+		<input type="submit" value = "Submit">
+	</form>
 	
 	<! GET:for non sensitive info.,passive data
            POST: for sensitive info.,updating data

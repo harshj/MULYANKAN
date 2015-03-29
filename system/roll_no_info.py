@@ -6,7 +6,7 @@ import xlrd
 import os
 
 def show():
-	path = os.curdir + os.sep + 'system' + os.sep + 'Roll Number Information.xls'
+	path = os.curdir + os.sep + 'system' + os.sep + 'data' + os.sep + 'Roll Number Information.xls'
 	errors = []
 	if os.path.exists(path): 
 		wb = xlrd.open_workbook(path)
