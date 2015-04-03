@@ -10,8 +10,11 @@ path = os.curdir + os.sep + 'system' + os.sep + 'data' + os.sep
 def handle_response(response):
 	errors =[]
 	global path
+	
+	move(path + "response.txt", path + "backup" + os.sep + "response.bak")	#Create backup file.
+	
 	try:
-		f = open(path + 'TEST1.txt', 'w')
+		f = open(path + 'response.txt', 'w')
 	except IOError	:	
 		errors.append("File opne failed !!!")
 		return errors
@@ -29,6 +32,9 @@ def handle_response(response):
 def handle_key(key):
 	errors =[]
 	global path
+	
+	move(path + "key.txt", path + "backup" + os.sep + "key.bak")	#Create backup file.
+	
 	try:
 		f = open(path + 'key.txt', 'w')
 	except IOError	:	

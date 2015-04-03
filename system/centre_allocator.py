@@ -11,10 +11,8 @@ from roll_gen import gen_roll_nos
 def allocate():
 	success = False
 	path = os.curdir + os.sep + "system" + os.sep + "data" + os.sep 
-	centre = xlrd.open_workbook(path + "Centre Information.xls" , formatting_info = True)
 	student = xlrd.open_workbook(path + "Student Information.xls" , formatting_info = True)
 	student_sh = student.sheet_by_index(0)
-	centre_sh = centre.sheet_by_index(0)
 
 	total_cand = student_sh.nrows - 1
 	roll_nos = gen_roll_nos(total_cand)
@@ -30,5 +28,4 @@ def allocate():
 	
 	student.save(path + "Roll Number Information.xls")
 	success = True
-	
 	return success

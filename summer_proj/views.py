@@ -113,9 +113,9 @@ def roll_no_info(request):
     return render(request , 'roll_no_info' , {'data':data , 'success':success , 'errors':errors})
 
 def centre_alloc(request):
-    success = system.centre_allocator.allocate()
-    return render(request, 'home' , {'alloc_success':success})
-
+	success = system.centre_allocator.allocate()
+	return HttpResponseRedirect('/roll_no_info/')
+	#return render( request, 'roll_no_info' , {'alloc_success' : success} )
 
 def result_evaluator(request):
     errors = []
@@ -123,7 +123,6 @@ def result_evaluator(request):
     if request.method == "POST":
             form = result_eval_form(request.POST,request.FILES)
             if form.is_valid():
-			
 				# handle uploaded files
 				error = handle_response(request.FILES['response'])
 				if len(error) != 0:
@@ -135,17 +134,14 @@ def result_evaluator(request):
 						return HttpResponse("An error has occured with key file. Contact admin!!!")
 				
 				# call result generation module
-				success,error = system.result_evaluator.evaluate()
+				error = system.result_evaluator.evaluate()
 				
 				if len(error) != 0 :
-					return HttpResponse("An error has occurred while evaluation. Please Contact the site admin!!!")
-					
-				if success:
-					# redirect to display result page
-					return HttpResponseRedirect("/show_result/")
+					return HttpResponse("%d error has occurred while evaluation. Please Contact the site admin!!!" %len(error))
 					
 				else:
-					return HttpResponse("Result Evaluation Failed, Contact admin.")
+					# redirect to display result page
+					return HttpResponseRedirect("/show_result/")
     
     else:
         form = result_eval_form()   
@@ -166,7 +162,7 @@ def re_evaluate(request):
 			error = system.result_evaluator.evaluate(questions)
 
 			if len(error) != 0 :
-					return HttpResponse("An error has occurred while evaluation. Please Contact the site admin!!!")
+					return HttpResponse("%d error has occurred while evaluation. Please Contact the site admin!!! "+ error[0] + error[1] %len(error))
 					
 			else :
 				# redirect to display result page

@@ -18,5 +18,9 @@ Results
 	{% else %}
 	Some error has occurred!!!
 	{% endif %}	
+	
+	<br>
+	<a href = "/re_evaluate/">Click Here</a> to remove some questions from evaluation and re-evaluate result. 
+	<br>
 
 {% endblock %}

@@ -25,9 +25,9 @@
 		{% if alloc_success %}
 			<p style="color:green">Enrollment Numbers successfully generated!!!</p>
 		{% endif %}
-		<a href = "centre_alloc">Allocate Centres and Generate Enrollment Numbers</a><br>
+		<a href = "/centre_alloc/">Allocate Centres and Generate Enrollment Numbers</a><br>
 	
-	        <a href = "roll_no_info">Show Allotted Enrollment Numbers</a><br>
+	    <a href = "/roll_no_info/">Show Allotted Enrollment Numbers</a><br>
 	
 	</p>
 {% endblock %}

@@ -10,8 +10,12 @@ from result import get_result
 #ROLL_SIZE = 13
 # questions: questions not to be evaluated.
 def evaluate(questions = []):
-	success = False  
 	errors = []
+	temp = []
+	for q in questions:
+		if q != " ":
+			temp.append(int(q))
+	questions = temp
 	wb = xlwt.Workbook()
 	ws = wb.add_sheet('result')
 	i = 0
@@ -23,7 +27,7 @@ def evaluate(questions = []):
 	
 	try:
 		path = os.curdir + os.sep + 'system' + os.sep + 'data' + os.sep
-		f = open (path + 'TEST1.txt' )
+		f = open (path + 'response.txt' )
 	except IOError:
 		errors.append("File not found error!!!")
 		return False,errors
@@ -35,16 +39,14 @@ def evaluate(questions = []):
 	    roll_no , qpset , response = get_data(data)
 	    correct , wrong , missed , score = get_result(qpset , response , questions)
 	    ws.write(i,0,roll_no)
-    	    ws.write(i,1,correct)
-   	    ws.write(i,2,wrong)
-            ws.write(i,3,missed)
-            ws.write(i,4,score)
+	    ws.write(i,1,correct)
+	    ws.write(i,2,wrong)
+	    ws.write(i,3,missed)
+	    ws.write(i,4,score)
 
 	f.close()
-	wb.save(path + "Result.xls")
-	success = True
-	
-	return success , errors
+	wb.save(path + "Result.xls")	
+	return errors
 
 #show function returns a list of list which contains all the data of Result.xls
 def show():
