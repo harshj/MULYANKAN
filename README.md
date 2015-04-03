@@ -12,7 +12,7 @@ the following columns :-
   3. Father's Name
   4. Mother's Name
   5. Address
-  6.Contact No
+  6. Contact No
   
 which is saved as Student Information.xls in the system/data directory and second containing the following columns:-
  
@@ -35,10 +35,10 @@ For result evaluation, the user is required to supply the raw response file (.tx
 system and key file (.txt format)(optional) which contains the correct answers to the questions according to the 
 question paper set. The contents of the key.txt file may look like as mentioned below:
 
-A123442413241342314234213
-B134132432413224132243423
-C243142313341324132413243
-D434134132413231324213134
+  A123442413241342314234213
+  B134132432413224132243423
+  C243142313341324132413243
+  D434134132413231324213134
 
 # Development
 This system is developed in PYTHON v2.7 and the GUI is web based and provided with help of Django(v1.6) framework.
