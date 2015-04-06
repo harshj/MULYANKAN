@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-Results
+Analysis
 {% endblock %}
 
 {% block content %}
@@ -19,22 +19,12 @@ Results
 	Some error has occurred!!!
 	{% endif %}	
 	
-	<p>
-	Dictionary:-<br>
-	<ul>
-		<li>c: Correct Answer
-		<li>w: Wrong Answer
-		<li>m: Missed
-		<li>'-': Question not evaluated
-	</ul>
-	</p>
-	
 	<br>
-	<a href = "/re_evaluate/">Remove some questions from evaluation</a>  and re-evaluate result. 
+	<a href = "/re_evaluate/">Remove some questions from evaluation</a>  and re-evaluate result.
 	<br>
 	
 	<br>
-	<a href = "/analysis/">View question wise analysis of result.</a> 
+	<a href = "/show_result/">View Result</a> 
 	<br>
 
 {% endblock %}

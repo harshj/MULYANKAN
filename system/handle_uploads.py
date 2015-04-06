@@ -16,7 +16,7 @@ def handle_response(response):
 	try:
 		f = open(path + 'response.txt', 'w')
 	except IOError	:	
-		errors.append("File opne failed !!!")
+		errors.append("File open failed !!!")
 		return errors
 
 	for chunks in response.chunks():
@@ -117,7 +117,7 @@ def handle_student_info(student_info):
 	for i in ['Application #' , 'Name' , "Father's Name" , "Mother's Name" , 'Address' , 'Contact No.']:	#Check for all required columns.
 		if i not in columns:
 			errors.append("Data Insufficient!!!")
-			move(path + "backup" + os.sep + "Student Information_backup.bak" , path + "Student Information.xls")	#Restore backedup file
+			copy(path + "backup" + os.sep + "Student Information_backup.bak" , path + "Student Information.xls")	#Restore backedup file
 			return errors
 		
 	return errors

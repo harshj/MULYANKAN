@@ -126,7 +126,7 @@ def result_evaluator(request):
 				# handle uploaded files
 				error = handle_response(request.FILES['response'])
 				if len(error) != 0:
-					return HttpResponse("An error has occured with response file. Contact admin!!!")
+					return HttpResponse(" %d An error has occured with response file. Contact admin!!!" %len(error) + error[0])
 				
 				if 'key' in request.FILES.iterkeys() :		# Check if key.txt was uploaded
 					error = handle_key(request.FILES['key'])
@@ -149,7 +149,7 @@ def result_evaluator(request):
 
 	
 def show_result(request):
-    data , success , errors = system.result_evaluator.show()
+    data , success , errors = system.result_evaluator.show(0)
     return render(request, 'show_result' , {'data' : data ,'success' : success ,'errors' : errors})
 
 # View to re-evaluate result.
@@ -172,4 +172,9 @@ def re_evaluate(request):
    	else:
 		form = re_evaluate_form()
 	return render(request,'re_evaluate' , {'form' : form})
+	
+# View to show question wise result analysis.
+def analysis(request):
+	data , success , errors = system.result_evaluator.show(1)
+	return render(request, 'show_analysis' , {'data' : data ,'success' : success ,'errors' : errors})
 	
