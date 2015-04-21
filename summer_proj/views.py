@@ -162,7 +162,7 @@ def re_evaluate(request):
 			error = system.result_evaluator.evaluate(questions)
 
 			if len(error) != 0 :
-					return HttpResponse("%d error has occurred while evaluation. Please Contact the site admin!!! "+ error[0] + error[1] %len(error))
+					return HttpResponse("An error has occurred while evaluation. Please Contact the site admin!!! ")
 					
 			else :
 				# redirect to display result page

@@ -11,13 +11,16 @@ from result import get_result, analyze
 #ROLL_SIZE = 13
 # questions: questions not to be evaluated.
 NO_OF_QUESTIONS = 156
-def evaluate(questions = []):
+def evaluate(questions = ""):
 	errors = []
-	temp = []
+	'''temp = []
 	for q in questions:
 		if q != " ":
 			temp.append(int(q))
-	questions = temp
+	questions = temp'''
+	questions = questions.split()
+	for i in xrange(len(questions)):
+		questions[i] = int(questions[i])
 	wb = xlwt.Workbook()
 	ws = wb.add_sheet('Result')
 	i = 0

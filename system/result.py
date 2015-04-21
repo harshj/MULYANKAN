@@ -6,18 +6,15 @@ from xlutils.copy import copy
 
 CORRECT_MARKS = 3
 INCORRECT_MARKS = -1
-
-path = os.curdir + os.sep + 'system' + os.sep + 'data' + os.sep 
+ 
 
 #Module to calculate result for each candidate and returns the correct# , wrong# , missed# , total score and student wise analysis of questions.
 def get_result(qpset , response , questions) :
-    #global correct , wrong , missed , score
-    global path
+
+    path = os.curdir + os.sep + 'system' + os.sep + 'data' + os.sep
     correct = wrong = missed = 0
-    try:    
-		f1 = open(path + 'key.txt')
-    except IOError:
-		return 
+    f1 = open(path + 'key.txt')
+
     key = f1.readline()
     while key[0] != qpset :
         key = f1.readline()
@@ -28,16 +25,16 @@ def get_result(qpset , response , questions) :
     i = 1
     for word in key :
 		if i not in questions:    #Check question is to be evaluated
-			if response[i-1] != ' ' :		#Check question not missed
-				if response[i-1] == word :	
+			if response[ i-1 ] != ' ' :		#Check question not missed
+				if response[ i-1 ] == word :	
 					correct+=1			#Correct response
-					stats[i-1] = 'c'
+					stats[ i-1 ] = 'c'
 				else :
 					wrong+=1			#Incorrect response
-					stats[i-1] = 'w'
+					stats[ i-1 ] = 'w'
 			else:
 				missed += 1
-				stats[i-1] = 'm'
+				stats[ i-1 ] = 'm'
 		i += 1
 
     score = CORRECT_MARKS * correct + INCORRECT_MARKS * wrong
@@ -46,7 +43,7 @@ def get_result(qpset , response , questions) :
 	
 #Module to carry out quetion wise analysis of results.
 def analyze():
-	global path
+	path = os.curdir + os.sep + 'system' + os.sep + 'data' + os.sep
 	errors = []
 	path = path + "Result.xls" 
 	if(os.path.exists(path)):

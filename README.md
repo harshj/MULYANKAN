@@ -46,3 +46,14 @@ Additionally xlrd and xlwt packages have been used for reading and writing to th
 to which the system reads and creates .xls files and not .xlsx files).
 The operating systems used for development and testing are Windows 8.1 and Linux Mint 17 and thus this system works 
 well in both these environments and though not tested it is also beleived to work on Mac OS.
+
+# Deployment
+To deploy this system , the following modules are needed:
+1. Python v2.7
+2. Django v1.6
+3. xlrd
+4. xlwt
+5. xlutils
+
+After setting up the system, cd into the root directory of the system(which contains manage.py and readme file) and 
+execute "python manage.py runserver" to deploy the system.
