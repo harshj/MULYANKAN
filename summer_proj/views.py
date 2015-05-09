@@ -121,6 +121,7 @@ def result_evaluator(request):
     errors = []
     success = False
     if request.method == "POST":
+	
             form = result_eval_form(request.POST,request.FILES)
             if form.is_valid():
 				# handle uploaded files
@@ -133,8 +134,13 @@ def result_evaluator(request):
 					if len(error) != 0:
 						return HttpResponse("An error has occured with key file. Contact admin!!!")
 				
-				# call result generation module
-				error = system.result_evaluator.evaluate()
+				no_of_questions = request.POST['no_of_questions']
+				if no_of_questions != '':
+					no_of_questions = int( no_of_questions )
+					# call result generation module
+					error = system.result_evaluator.evaluate("" , no_of_questions)
+				else:
+					error = system.result_evaluator.evaluate()
 				
 				if len(error) != 0 :
 					return HttpResponse("%d error has occurred while evaluation. Please Contact the site admin!!!" %len(error))
@@ -158,9 +164,13 @@ def re_evaluate(request):
 		form = re_evaluate_form(request.POST)
 		if form.is_valid():
 			questions = request.POST['questions']
-			
-			error = system.result_evaluator.evaluate(questions)
-
+			no_of_questions = request.POST['no_of_questions']
+			if no_of_questions != '':
+				no_of_questions = int( no_of_questions )
+				error = system.result_evaluator.evaluate(questions , no_of_questions)
+			else:
+				error = system.result_evaluator.evaluate(questions)
+				
 			if len(error) != 0 :
 					return HttpResponse("An error has occurred while evaluation. Please Contact the site admin!!! ")
 					

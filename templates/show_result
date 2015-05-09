@@ -25,7 +25,8 @@ Results
 		<li>c: Correct Answer
 		<li>w: Wrong Answer
 		<li>m: Missed
-		<li>'-': Question not evaluated
+		<li>'-': Question not to be evaluated
+		<li>'*': Invalid response
 	</ul>
 	</p>
 	

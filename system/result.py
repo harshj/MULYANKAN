@@ -9,37 +9,48 @@ INCORRECT_MARKS = -1
  
 
 #Module to calculate result for each candidate and returns the correct# , wrong# , missed# , total score and student wise analysis of questions.
-def get_result(qpset , response , questions) :
+def get_result(qpset , NO_OF_QUESTIONS , response , questions) :
 
     path = os.curdir + os.sep + 'system' + os.sep + 'data' + os.sep
-    correct = wrong = missed = 0
+    correct = wrong = missed = invalid = 0
     f1 = open(path + 'key.txt')
 
     key = f1.readline()
     while key[0] != qpset :
         key = f1.readline()
-    key = key[1:]
+    key = key[1:NO_OF_QUESTIONS + 1]
     key = key.rstrip('\n\r')				#To remove trailing \r and \n 
     response = response.rstrip('\n\r')		#To remove trailing \r and \n
     stats = ['-' for i in key]		#Maintain question wise stats.
     i = 1
     for word in key :
 		if i not in questions:    #Check question is to be evaluated
-			if response[ i-1 ] != ' ' :		#Check question not missed
-				if response[ i-1 ] == word :	
-					correct+=1			#Correct response
-					stats[ i-1 ] = 'c'
-				else :
-					wrong+=1			#Incorrect response
-					stats[ i-1 ] = 'w'
+			
+			if response[ i - 1] != '*':			# Check Invalid response
+				
+				if response[ i-1 ] != ' ' :		#Check question not missed
+					
+					if response[ i-1 ] == word :	
+						correct+=1			#Correct response
+						stats[ i-1 ] = 'c'
+					
+					else :
+						wrong+=1			#Incorrect response
+						stats[ i-1 ] = 'w'
+				
+				else:
+					missed += 1
+					stats[ i-1 ] = 'm'
+			
 			else:
-				missed += 1
-				stats[ i-1 ] = 'm'
+				stats[ i - 1] = '*'
+				invalid += 1
+		
 		i += 1
 
     score = CORRECT_MARKS * correct + INCORRECT_MARKS * wrong
     f1.close()
-    return correct , wrong , missed , score , stats
+    return correct , wrong , missed , invalid , score , stats
 	
 #Module to carry out quetion wise analysis of results.
 def analyze():

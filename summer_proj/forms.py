@@ -45,6 +45,10 @@ class centre_info_form(forms.Form):
 class result_eval_form(forms.Form):
 	response = forms.FileField(label = "Response File", help_text = "(.txt) file")
 	key = forms.FileField(label = "Key File" , required = False , help_text = '(.txt) file')
+	no_of_questions = forms.CharField(
+										label = "Number of Questions to be Evaluated \n \n" ,
+										required = False
+										)
 	
 class student_info_upload_form(forms.Form):
 	student_info = forms.FileField(label = "Student Information spreadsheet" , help_text = "(.xls) file")
@@ -53,10 +57,16 @@ class centre_info_upload_form(forms.Form):
 	centre_info = forms.FileField(label = "Centre Information spreadsheet" , help_text = "(.xls) file")
 
 class re_evaluate_form(forms.Form):
+	no_of_questions = forms.CharField(
+										label = "Number of Questions to be Evaluated \n \n" ,
+										required = False
+										)
+										
 	questions = forms.CharField(
-								label = "Questions to Uncheck \n\n" , 
-								help_text = "Seperate multiple with blank spaces (' ') " , 
+								label = " \n\n Questions to Uncheck" , 
+								help_text = "\n Seperate multiple with blank spaces (' ') \n" , 
 								)
+
 
 	def clean_questions(self):
 		questions = self.cleaned_data['questions']

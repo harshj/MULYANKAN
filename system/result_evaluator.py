@@ -10,8 +10,8 @@ from result import get_result, analyze
 
 #ROLL_SIZE = 13
 # questions: questions not to be evaluated.
-NO_OF_QUESTIONS = 156
-def evaluate(questions = ""):
+#NO_OF_QUESTIONS = 156
+def evaluate(questions = "" , NO_OF_QUESTIONS = 156 ):
 	errors = []
 	'''temp = []
 	for q in questions:
@@ -28,9 +28,10 @@ def evaluate(questions = ""):
 	ws.write(i,1,'Correct')
 	ws.write(i,2,'Incorrect')
 	ws.write(i,3,'Missed')
-	ws.write(i,4,'Marks Obtained')
+	ws.write(i,4,'Invalid #')
+	ws.write(i,5,'Marks Obtained')
 	for j in xrange(NO_OF_QUESTIONS):
-		ws.write( i,j + 5,'Q%d'%(j+1) )
+		ws.write( i,j + 6,'Q%d'%(j+1) )
 	
 	try:
 		path = os.curdir + os.sep + 'system' + os.sep + 'data' + os.sep
@@ -44,14 +45,27 @@ def evaluate(questions = ""):
 	    j = 5
 	    data = line[84:]
 	    roll_no , qpset , response = get_data(data)
-	    correct , wrong , missed , score , stats = get_result(qpset , response , questions)
+	    if qpset != '*':
+	    	correct , wrong , missed , invalid , score , stats = get_result(qpset , NO_OF_QUESTIONS , response , questions)
+	    	correct_qp = 1
+	    else:
+	    	correct = "Invalid question " 
+	    	wrong = "paper set."
+	    	missed = " Booklet code is "
+	    	invalid = line[:22]
+	    	score = ""
+	    	correct_qp = 0
+		
 	    ws.write(i,0,roll_no)
 	    ws.write(i,1,correct)
 	    ws.write(i,2,wrong)
 	    ws.write(i,3,missed)
-	    ws.write(i,4,score)
-	    for j in xrange(NO_OF_QUESTIONS):
-	        ws.write( i , j + 5 , stats[j] )
+	    ws.write(i,4,invalid)
+	    ws.write(i , 5 , score)
+		
+	    if correct_qp:
+	    	for j in xrange(NO_OF_QUESTIONS):
+	    		ws.write( i , j + 6 , stats[j] )
 	f.close()
 	
 	copy(path + "Result.xls" , path + "backup" + os.sep + "Previous Result.bak")		#Make backup of previous result.

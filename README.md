@@ -32,8 +32,8 @@ corresponding to the application number.
 
 # Result Evaluation
 For result evaluation, the user is required to supply the raw response file (.txt format) directly from the OMR 
-system and key file (.txt format)(optional) which contains the correct answers to the questions according to the 
-question paper set. The contents of the key.txt file may look like as mentioned below:
+system(tested for Panasonic systems) and key file (.txt format)(optional) which contains the correct answers to 
+the questions according to the question paper set. The contents of the key.txt file may look like as mentioned below:
 
   A123442413241342314234213
   B134132432413224132243423
