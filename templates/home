@@ -1,33 +1,44 @@
 {% extends "base.html" %}
 
-{% block title %}Home{% endblock %}
+{% block style %}
+    {% load static from staticfiles %}
+    <link href = {% static "/static/home.css" %} type = "text/css" rel = "stylesheet" />
+{% endblock %}
+
+{% block title %}
+Home
+{% endblock %}
 
 {% block content %}
-	<p>
-		<b>Please Choose your option:-</b><br><br>
-
+	<h4>
+		<b>Please Choose your option:-</b><br>
+    </h4>
+ 
+    <p>
 		<b>Result Evaluation System :</b><br><br>
 
 		{% if eval_success %}
-			<p style="color:green">Result Evaluated Successfully!!!</p>
+			<p style="color:green" class = 'success'>Result Evaluated Successfully!!!</p>
 		{% endif %}
-		<a href="/generate_result/">Generate New Results</a><br>
 
-		<a href="/show_result/">View Last Results</a><br><br>
-
+		
+		<a href="/generate_result/" class = 'button_small'>Generate New Results</a>
+        <br>    
+		<a href="/show_result/" class = 'button_small'>View Last Results</a><br><br>
+         
 		
 		<b>Roll No. Generation and Centre Allocaion System:</b><br><br>
 
-		<a href="/student_info/">Enter Student Information </a><br>
+		<a href="/student_info/" class = 'button_small'>Enter Student Information </a><br>
 
-		<a href="/centre_info/">Enter Centre Info</a><br>
+		<a href="/centre_info/" class = 'button_small'>Enter Centre Info</a><br>
 
 		{% if alloc_success %}
 			<p style="color:green">Enrollment Numbers successfully generated!!!</p>
 		{% endif %}
-		<a href = "/centre_alloc/">Allocate Centres and Generate Enrollment Numbers</a><br>
+		<a href = "/centre_alloc/" class = 'button_large'>Allocate Centres and Generate Enrollment Numbers</a><br>
 	
-	    <a href = "/roll_no_info/">Show Allotted Enrollment Numbers</a><br>
+	    <a href = "/roll_no_info/" class = 'button_large'>Show Allotted Enrollment Numbers</a><br>
 	
 	</p>
 {% endblock %}

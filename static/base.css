@@ -1,0 +1,26 @@
+*{
+    font-family : sans-serif;
+    background-color : #FFFFF0; 
+}
+
+h2{
+	color:green;
+	text-align:center
+}
+
+p.base{
+    position : relative;
+    text-align : right; 
+    left : -20px;
+}
+
+a{
+    text-decoration : none;
+    color : #A300A3;
+}
+
+#footer{
+    color:red;
+    text-align : center;
+}
+

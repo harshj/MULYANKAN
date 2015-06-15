@@ -1,0 +1,48 @@
+h4{
+    text-align: center;
+    font : italic bold 1.3em georgia ;
+    color: #005CE6;
+}
+
+p{
+    position:relative;
+    left : 20px;
+    font : italic 1em georgia ;
+    color : #B8008A;
+}
+
+.button_small{
+    display : block;
+    height : 50px;
+    width : 200px ;
+    background : #FF6666;
+    border: 2px solid rgba(33, 68, 72, 0.59);
+    text-align: center;
+    font: 1em/40px "Helvetica Neue", Arial, Helvetica, Geneva; 
+    color : #29330A; 
+    text-decoration : none;
+    border-radius: 25px;
+    box-shadow: 1px 5px 0 #1b383b;
+}
+
+.button_large{
+    display : block;
+    height : 50px;
+    width : 300px ;
+    background : #FF6666;
+    border: 2px solid rgba(33, 68, 72, 0.59);
+    text-align: center;
+    font: 1em/25px "Helvetica Neue", Arial, Helvetica, Geneva; 
+    text-decoration : none;
+    color : #29330A; 
+    border-radius: 25px;
+    box-shadow: 1px 5px 0 #1b383b;
+}
+
+a.button_small:hover {
+    background: #C2FFC2;
+}   
+
+a.button_large:hover{
+    background: #C2FFC2;
+}
