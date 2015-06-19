@@ -1,43 +1,53 @@
 {% extends "base.html" %}
 
+{% block style %}
+    {% load static from staticfiles %}
+    <link href = {% static "/static/centre_info.css" %} type = "text/css" rel = "stylesheet" />
+{% endblock %}
+
 {% block title %}
 	Centre Info. Portal
 {% endblock %}
 
 {% block content %}
+
 	<h3>Centre Information</h3>
 
-	<font size='4'>Append data to existing file:</font><br><br>
+    <p>
+	    Append data to existing file:<br><br>
+	</p>
 	
 	{% if success %}
-		<font color="green" size="3">Append Success!!! Please ignore other errors.</font>
+		<p class = 'success'>Append Success!!! Please ignore other errors.</p>
 	{% endif %}
 	
 	{% if upload_success == False and form.errors %}
-		<font color="red" font="3">Please correct the errors!!!</font>
+		<p class = 'fail'>Please correct the errors!!!</p>
 	{% endif %}
 	
 	<form action="" method = "POST">	
 		{% csrf_token %}   <! for Cross Site Reference Forgeries >
 		{{ form | linebreaksbr }}
 		<br><br>
-		<input type="submit" value ="Submit">
+		<input type="submit" value ="Submit" class = 'button_submit'>
 	</form>
 	
 	<br>
-	<font size = '4'>OR Upload a file:</font> <br><br>
+	<p>
+	    OR Upload a file:<br><br>
+	</p>
 	
 	{% if upload_success %}
-		<font color="green" size="3">File Upload Success!!! Please ignore other errors.</font>
+		<p class = 'success'>File Upload Success!!! Please ignore other errors.</p>
 	{% endif %}
 	
 	{% if success == False and upload_form.errors %}
-		<font color="red" font="3">Please correct the errors!!!</font>
+		<p class = 'fail'>Please correct the errors!!!</p>
 	{% endif %}
 	
 	<form action = "" method = "POST" enctype="multipart/form-data">
 		{%  csrf_token %}
-		{{	upload_form | linebreaks}}
-		<input type="submit" value = "Submit">
+		{{	upload_form | linebreaksbr }}
+		<input type="submit" value = "Submit" class = 'button_submit'>
 	</form>
 {% endblock %}

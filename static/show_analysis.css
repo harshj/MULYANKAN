@@ -1,0 +1,31 @@
+h3{
+    text-align: center;
+    font : italic bold 1.8em georgia ;
+    color: #005CE6;
+}
+
+.button{
+    display : block;
+    height : 50px;
+    width : 250px;
+    margin : auto;
+    padding : 5px 5px 5px 5px;
+    border : 2px solid black;
+    border-radius : 15px;
+    text-align : center;   
+    color : #006020; 
+    background-color:#FF9966;
+}
+
+a.button{
+    font : italic 19px georgia;
+}
+
+a.button:hover{
+    font-size : 20px ;
+    background-color:#FF9999;
+}
+
+#analysis{
+    margin-left : 300px;
+}

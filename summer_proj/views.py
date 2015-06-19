@@ -40,8 +40,8 @@ def student_info(request):
         #If data is entered.
         if form.is_valid():
             name = request.POST['name']
-            fname = request.POST['fname']
-            mname = request.POST['mname']
+            fname = request.POST["father_name"]
+            mname = request.POST['mother_name']
             address = request.POST['address']
             contact = request.POST['contact']
             flag,error =  system.student_application.save(name,fname,mname,address,contact)
@@ -79,8 +79,8 @@ def centre_info(request):
 
 		# If data is entered.
         if form.is_valid():
-            cname = request.POST['cname']
-            caddress = request.POST['caddress']
+            cname = request.POST['center_name']
+            caddress = request.POST['center_address']
             capacity = request.POST['capacity']
             flag,error = system.centre_info.save(cname,caddress,capacity)
             if(flag == True):
@@ -164,7 +164,7 @@ def re_evaluate(request):
 		form = re_evaluate_form(request.POST)
 		if form.is_valid():
 			questions = request.POST['questions']
-			no_of_questions = request.POST['no_of_questions']
+			no_of_questions = request.POST['number_of_questions']
 			if no_of_questions != '':
 				no_of_questions = int( no_of_questions )
 				error = system.result_evaluator.evaluate(questions , no_of_questions)

@@ -2,21 +2,32 @@
 
 {% extends "base.html" %}
 
+{% block style %}
+    {% load static from staticfiles %}
+    <link href = {% static "/static/result_evaluator.css" %} type = "text/css" rel = "stylesheet" />
+{% endblock %}
+
 {% block title %}Result Evaluator{% endblock %}
 
 {% block content %}
 
+    <h3>
+        Result Evaluator
+    </h3>
+    
 	{% if success %}
 		<font color="green" font-size="5">Success!!!</font>
 	{% endif %}
 
-	Please upload the appropriate files.<br><br>
-
+    <p>
+	Please upload the appropriate files.
+    </p>
+    
 	<form action=""  method = "POST" enctype="multipart/form-data">
 		{% csrf_token %}
 		{{form}}
 		<br>
-		<input type = "Submit" value="Submit">
+		<input type = "Submit" value="Submit" class='button_submit'>
 	</form>
 	
 {% endblock %}

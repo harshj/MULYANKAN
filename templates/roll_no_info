@@ -8,12 +8,28 @@
 	{% else %}
 		<table style="width:60%">
 		{% for i in data %}
-			<tr> 
-				{% for j in i %}
-					<td>{{ j }}</td>
-				{% endfor %}
-			</tr>
+		    
+		    {% if forloop.first %}
+			
+			    <tr> 
+				    {% for j in i %}
+					    <th>{{ j }}</th>
+				    {% endfor %}
+			    </tr>
+			
+			{% else %}
+			    
+			    <tr> 
+				    {% for j in i %}
+					    <td>{{ j }}</td>
+				    {% endfor %}
+			    </tr>
+			    
+			
+			{% endif %}
+		
 		{% endfor %}
+		
 		</table>	
 	{% endif %}
 

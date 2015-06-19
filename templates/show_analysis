@@ -1,30 +1,60 @@
 {% extends "base.html" %}
 
+{% block style %}
+    {% load static from staticfiles %}
+    <link href = {% static "/static/show_analysis.css" %} type = "text/css" rel = "stylesheet" />
+{% endblock %}
+
 {% block title %}
 Analysis
 {% endblock %}
 
 {% block content %}
+
+    <h3>
+        Question Wise Analysis
+    </h3>
+    
+    <div id = 'analysis'>
+	
 	{% if success%}
 		<table style="width:60%">
+		
 		{% for i in data %}
-		<tr>
-			{%for j in i %}		
-				<td>{{j}}</td>
-			{% endfor %}
-		</tr>
+		
+		    {% if forloop.first %}
+		        
+		        <tr>
+			        {%for j in i %}		
+				        <th>{{j}}</th>
+			        {% endfor %}
+		        </tr>
+		    
+		    {% else %}
+		    
+		        <tr>
+			        {%for j in i %}		
+				        <td>{{j}}</td>
+			        {% endfor %}
+		        </tr>
+		        
+		    {% endif %}
+		
 		{% endfor %}
+		
 		</table>
+	</div>
+	
 	{% else %}
 	Some error has occurred!!!
 	{% endif %}	
 	
 	<br>
-	<a href = "/re_evaluate/">Remove some questions from evaluation</a>  and re-evaluate result.
+	<a href = "/re_evaluate/" class = 'button'>Remove questions from evaluation and re-evaluate.</a>
 	<br>
 	
 	<br>
-	<a href = "/show_result/">View Result</a> 
+	<a href = "/show_result/" class = 'button'>View Result</a> 
 	<br>
 
 {% endblock %}

@@ -1,14 +1,12 @@
-h4{
+h3{
     text-align: center;
-    font : italic bold 1.3em georgia ;
+    font : italic bold 1.8em georgia ;
     color: #005CE6;
 }
 
 p{
     position:relative;
     left : 20px;
-    font : italic 1em georgia ;
+    font : italic 1.3em georgia ;
     color : #B8008A;
 }
-
-

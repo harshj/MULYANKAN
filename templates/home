@@ -23,15 +23,15 @@ Home
 
 		
 		<a href="/generate_result/" class = 'button_small'>Generate New Results</a>
-        <br>    
+          
 		<a href="/show_result/" class = 'button_small'>View Last Results</a><br><br>
          
 		
 		<b>Roll No. Generation and Centre Allocaion System:</b><br><br>
 
-		<a href="/student_info/" class = 'button_small'>Enter Student Information </a><br>
+		<a href="/student_info/" class = 'button_small'>Enter Student Information </a>
 
-		<a href="/centre_info/" class = 'button_small'>Enter Centre Info</a><br>
+		<a href="/centre_info/" class = 'button_small'>Enter Centre Info</a><br><br>
 
 		{% if alloc_success %}
 			<p style="color:green">Enrollment Numbers successfully generated!!!</p>

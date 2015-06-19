@@ -12,6 +12,7 @@ p.base{
     position : relative;
     text-align : right; 
     left : -20px;
+    font : bold italic 25px georgia;
 }
 
 a{
@@ -19,8 +20,113 @@ a{
     color : #A300A3;
 }
 
+a:hover{
+	color: green;
+	font-weight: bold;
+	text-decoration: none;   
+}
+
 #footer{
     color:red;
     text-align : center;
 }
+
+.button_small{
+    display : inline-block;
+    height : 50px;
+    width : 200px ;
+    background : #FF6666;
+    border: 2px solid rgba(33, 68, 72, 0.59);
+    text-align: center;
+    font: 1em/40px "Helvetica Neue", Arial, Helvetica, Geneva; 
+    color : #29330A; 
+    text-decoration : none;
+    border-radius: 25px;
+    box-shadow: 1px 5px 0 #1b383b;
+    margin:10px;
+}
+
+.button_large{
+    display : block;
+    height : 50px;
+    width : 300px ;
+    background : #FF6666;
+    border: 2px solid rgba(33, 68, 72, 0.59);
+    text-align: center;
+    font: 1em/25px "Helvetica Neue", Arial, Helvetica, Geneva; 
+    text-decoration : none;
+    color : #29330A; 
+    border-radius: 25px;
+    box-shadow: 1px 5px 0 #1b383b;
+    margin:10px;
+}
+
+.button_submit{
+    display : block;
+    height : 30px;
+    width : 120px;
+    border : 3px solid rgba(33, 68, 72, 0.59);
+    border-radius : 25%;
+    background-color : #FF6666;
+    text-align : center;
+    color : #29330A; 
+    margin-left : 100px;   
+}
+
+a.button_small:hover {
+    background: #C2FFC2;
+}   
+
+a.button_large:hover{
+    background: #C2FFC2;
+}
+
+.text_input{
+
+    display:inline-block;
+    height:25px;
+    width:200px;
+    box-shadow: 1px 2px grey;
+    margin:10px 10px 10px 10px;   
+    background-color:white;
+    border:1px solid black;
+    
+}
+
+.text_input:focus{
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    border: 1px 2px solid rgba(81, 203, 238, 1);
+}
+
+.help_text{
+    color:grey;
+    font-size:12px;
+}
+
+table, td {
+   border: 1px solid black;
+}
+
+td{
+    display:block;
+    padding : 3px;
+}
+
+th{
+    border: 2px solid black;
+    background-color:#FFAD5C;
+    margin-left : 20px;
+    
+}
+
+.success{
+    font : italic 15px georgia;
+    color : green;
+}
+
+.fail{
+    font : italic 15px georgia;
+    color : red;
+}
+
 

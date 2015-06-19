@@ -2,15 +2,20 @@
 
 {% extends "base.html" %}
 
+{% block style %}
+    {% load static from staticfiles %}
+    <link href = {% static "/static/re_evaluate.css" %} type = "text/css" rel = "stylesheet" />
+{% endblock %}
+
 {% block title %}Result Re-evaluate{% endblock %}
 
 {% block content %}
 
 	<form action = "" method = "POST">
 		{% csrf_token %}
-		{{ form }}
+		{{ form | linebreaks}}
 		<br>
-		<input type = "Submit" value = "Re-Evaluate">				
+		<input type = "Submit" value = "Re-Evaluate" class = 'button_submit'>				
 	</form>
 
 {% endblock %}

@@ -1,0 +1,17 @@
+*{
+    font-size : 18px;
+    color : black;
+}
+
+h3{
+    text-align: center;
+    font : italic bold 1.8em georgia ;
+    color: #005CE6;
+}
+
+p{
+    position:relative;
+    left : 20px;
+    font : italic 1.3em georgia ;
+    color : #B8008A;
+}
