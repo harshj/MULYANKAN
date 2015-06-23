@@ -1,6 +1,6 @@
 #  Module to extract metadata from supplied string
 
-ROLL_SIZE = 13
+from constants import ROLL_SIZE
 
 def get_data(line):
     #global app_no, qpset ,response

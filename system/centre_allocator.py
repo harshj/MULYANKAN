@@ -7,10 +7,11 @@ import os
 from random import shuffle
 from xlutils.copy import copy	#To write to an existing document
 from roll_gen import gen_roll_nos
+from constants import SYS_ROOT
 
 def allocate():
 	success = False
-	path = os.curdir + os.sep + "system" + os.sep + "data" + os.sep 
+	path = SYS_ROOT + os.sep + "system" + os.sep + "data" + os.sep 
 	student = xlrd.open_workbook(path + "Student Information.xls" , formatting_info = True)
 	student_sh = student.sheet_by_index(0)
 

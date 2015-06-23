@@ -2,10 +2,11 @@
 
 import xlrd
 import os
+from constants import SYS_ROOT
 
 
 def gen_roll_nos(total):
-	path = os.curdir + os.sep + "system" + os.sep + "data" + os.sep + "Centre Information.xls"
+	path = SYS_ROOT + os.sep + "system" + os.sep + "data" + os.sep + "Centre Information.xls"
 	centre = xlrd.open_workbook(path)
 	centre_sh = centre.sheet_by_index(0)
 

@@ -4,9 +4,10 @@
 
 import xlrd
 import os
+from constants import SYS_ROOT
 
 def show():
-	path = os.curdir + os.sep + 'system' + os.sep + 'data' + os.sep + 'Roll Number Information.xls'
+	path = SYS_ROOT + os.sep + 'system' + os.sep + 'data' + os.sep + 'Roll Number Information.xls'
 	errors = []
 	if os.path.exists(path): 
 		wb = xlrd.open_workbook(path)

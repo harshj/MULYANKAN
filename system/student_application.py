@@ -4,10 +4,11 @@ import xlrd
 import xlwt
 import os
 from xlutils.copy import copy	#Tools for copying xlrd.Book objects to xlwt.Workbook objects.
+from constants import SYS_ROOT
 
 def save(name,fname,mname,address,contact):
 	errors = []
-	path = os.curdir + os.sep + "system" + os.sep + 'data' + os.sep + "Student Information.xls"
+	path = SYS_ROOT + os.sep + "system" + os.sep + 'data' + os.sep + "Student Information.xls"
 	if(os.path.exists(path)):
 		wb = xlrd.open_workbook(path , formatting_info = True)
 		sheet = wb.sheet_by_index(0)

@@ -107,7 +107,7 @@ class result_eval_form(forms.Form):
 	no_of_questions = forms.CharField(
 										label = "Number of Questions to be Evaluated \n \n" ,
 										required = False,
-										help_text = "<div class = 'help_text' >* Not Neccessary </div>",
+										help_text = "<div class = 'help_text' >* Not Neccessary. Default value will be used. </div>",
 										widget = forms.NumberInput(attrs=          
 	                                                {'class':'text_input',
 	                                                }
@@ -124,7 +124,7 @@ class re_evaluate_form(forms.Form):
 	number_of_questions = forms.CharField(
 	                                    label = "Number of Questions to be Evaluated",
 	                                    required = False ,
-	                                    help_text = "<div class = 'help_text'>* Not Neccessary </div>" ,
+	                                    help_text = "<div class = 'help_text'>* Not Neccessary. Default value will be used. </div>" ,
 										widget = forms.TextInput( attrs = 
 										                         { 
 										                            'class':'text_input',
@@ -134,6 +134,7 @@ class re_evaluate_form(forms.Form):
 										
 	questions = forms.CharField(
 	                            label = " Questions to Uncheck" ,
+	                            required = False ,
 	                            help_text = "<div class = 'help_text'>* Seperate multiple with blank spaces (' ') </div>" , 
 	                            widget = forms.TextInput( attrs =
 								                         {

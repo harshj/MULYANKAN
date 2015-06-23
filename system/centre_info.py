@@ -4,11 +4,12 @@
 import os
 import xlrd,xlwt
 from xlutils.copy import copy
+from constants import SYS_ROOT
 
 
 def save(cname , caddress , capacity):
 	
-	path = os.curdir + os.sep + 'system' + os.sep + "data" + os.sep + 'Centre Information.xls'
+	path = SYS_ROOT + os.sep + 'system' + os.sep + "data" + os.sep + 'Centre Information.xls'
 	errors = []
 
 	if os.path.exists(path) :

@@ -155,7 +155,7 @@ def result_evaluator(request):
 
 	
 def show_result(request):
-    data , success , errors = system.result_evaluator.show(0)
+    data , success , errors = system.result_evaluator.show(0)   # 0 = sheet no. in result.xls
     return render(request, 'show_result' , {'data' : data ,'success' : success ,'errors' : errors})
 
 # View to re-evaluate result.
@@ -165,7 +165,8 @@ def re_evaluate(request):
 		if form.is_valid():
 			questions = request.POST['questions']
 			no_of_questions = request.POST['number_of_questions']
-			if no_of_questions != '':
+			
+			if no_of_questions != '' :
 				no_of_questions = int( no_of_questions )
 				error = system.result_evaluator.evaluate(questions , no_of_questions)
 			else:

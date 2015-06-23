@@ -3,8 +3,9 @@
 import os
 import xlrd
 from shutil import move,copy		# To create backup files.
+from constants import SYS_ROOT
 
-path = os.curdir + os.sep + 'system' + os.sep + 'data' + os.sep
+path = SYS_ROOT + os.sep + 'system' + os.sep + 'data' + os.sep
 
 # Module to handle response file from generate_result
 def handle_response(response):

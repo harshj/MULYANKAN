@@ -39,7 +39,38 @@ the questions according to the question paper set. The contents of the key.txt f
   B134132432413224132243423
   C243142313341324132413243
   D434134132413231324213134
-
+  
+For further details one can refer to the sample inputs provided in the 'Samples' directory.
+The defaults can be changed for the result evaluation system as follows:-
+	1. Number of Question to be evaluated : 
+		Go to constants.py in system directory and change the constant NO_OF_QUES.
+		
+	2. Number of marks to be awarded for correct, incorrect , missed and invalid responses :
+		Go to constants.py file in system directory and change the constants on the top to the desired values.
+	
+	3. The roll number size :
+		Roll size is required since the system reads the lines from the response file and ignores the first few bits which
+		are equal to the size of the roll number.
+		Go to data.py file in system directory and change the constant ROLL_SIZE to the desired value.
+	
+	4. Passive data size:
+		Passive data is that data which is read from the OCR such as the booklet code , name of candidate and other such 
+		information which is not used in the system. These number of bits must be specified to be ignored while reading 
+		response.
+		To change the size of passive data go to constants.py in system directory and change the constant
+		PASSIVE_DATA to the desired value.
+	
+	5. Booklet Code size:
+		Booklet code size is required to extract booklet code from passive data incase a faulty qpset is encountered.
+		To change its size goto constants.py in system directory and change the constant BOOKLET_CODE_SIZE to
+		the desired value. Works only when the booklet code appears in the beginning of every response line.
+		
+	6. System Root Directory (SYS_ROOT):
+		The Django docs suggest that one should use absolute paths in django application. The absolute path may be different
+		while deploying this app for different systems, so one must set the SYS_ROOT variable in constants.py file as the absolute
+		path to the root directory of the application i.e. the directory containing the manage.py file. This is set to os.cur by 
+		default since it works during development and testing on various Operating Systems and must be chanaged while Deploying. 
+	
 # Development
 This system is developed in PYTHON v2.7 and the GUI is web based and provided with help of Django(v1.6) framework.
 Additionally xlrd and xlwt packages have been used for reading and writing to the Excel spreadsheets (primarily due
@@ -49,11 +80,15 @@ well in both these environments and though not tested it is also beleived to wor
 
 # Deployment
 To deploy this system , the following modules are needed:
-1. Python v2.7
+1. Python v2.7  
+        sudo apt-get install python 2.7
 2. Django v1.6
-3. xlrd
+        sudo apt-get install python-pip
+        sudo pip install Django==1.6
+3. xlrd        
 4. xlwt
 5. xlutils
+        sudo pip install xlrd xlwt xlutils
 
-After setting up the system, cd into the root directory of the system(which contains manage.py and readme file) and 
+After setting up the system, cd into the root directory of the system(which contains manage.py and this readme file) and 
 execute "python manage.py runserver" to deploy the system.

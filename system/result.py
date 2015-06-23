@@ -4,14 +4,19 @@ import os
 import xlrd , xlwt
 from xlutils.copy import copy
 
-CORRECT_MARKS = 3
-INCORRECT_MARKS = -1
+from constants import (
+						CORRECT_MARKS,
+						INCORRECT_MARKS,
+						INVALID_MARKS,
+						MISSED_MARKS,
+						SYS_ROOT
+					)
  
 
 #Module to calculate result for each candidate and returns the correct# , wrong# , missed# , total score and student wise analysis of questions.
 def get_result(qpset , NO_OF_QUESTIONS , response , questions) :
 
-    path = os.curdir + os.sep + 'system' + os.sep + 'data' + os.sep
+    path = SYS_ROOT + os.sep + 'system' + os.sep + 'data' + os.sep
     correct = wrong = missed = invalid = 0
     f1 = open(path + 'key.txt')
 
@@ -48,13 +53,13 @@ def get_result(qpset , NO_OF_QUESTIONS , response , questions) :
 		
 		i += 1
 
-    score = CORRECT_MARKS * correct + INCORRECT_MARKS * wrong
+    score = CORRECT_MARKS * correct + INCORRECT_MARKS * wrong + INVALID_MARKS * invalid + MISSED_MARKS * missed
     f1.close()
     return correct , wrong , missed , invalid , score , stats
 	
 #Module to carry out quetion wise analysis of results.
 def analyze():
-	path = os.curdir + os.sep + 'system' + os.sep + 'data' + os.sep
+	path = SYS_ROOT + os.sep + 'system' + os.sep + 'data' + os.sep
 	errors = []
 	path = path + "Result.xls" 
 	if(os.path.exists(path)):
@@ -72,7 +77,7 @@ def analyze():
 	analysis_sh.write(0 , 2 , "Wrong#")
 	analysis_sh.write(0 , 3 , "Missed#")
 	
-	for i in xrange(5 , result_sh.ncols):
+	for i in xrange(6 , result_sh.ncols):
 		correct = wrong = missed = 0
 		for j in xrange(1,result_sh.nrows):
 			value = result_sh.cell_value(j,i)
@@ -91,15 +96,15 @@ def analyze():
 				break
 		
 		if correct == 0 and wrong == 0 and missed == 0:
-			analysis_sh.write(i - 4 , 0 , "Q%d"%(i - 4))
-			analysis_sh.write(i - 4 , 1 , def_msg)
-			analysis_sh.write(i - 4 , 2 , def_msg)
-			analysis_sh.write(i - 4 , 3 , def_msg)
+			analysis_sh.write(i - 5 , 0 , "Q%d"%(i - 5))
+			analysis_sh.write(i - 5 , 1 , def_msg)
+			analysis_sh.write(i - 5 , 2 , def_msg)
+			analysis_sh.write(i - 5 , 3 , def_msg)
 		else:
-			analysis_sh.write(i - 4 , 0 , "Q%d"%(i - 4))
-			analysis_sh.write(i - 4 , 1 , correct)
-			analysis_sh.write(i - 4 , 2 , wrong)
-			analysis_sh.write(i - 4 , 3 , missed)
+			analysis_sh.write(i - 5 , 0 , "Q%d"%(i - 5))
+			analysis_sh.write(i - 5 , 1 , correct)
+			analysis_sh.write(i - 5 , 2 , wrong)
+			analysis_sh.write(i - 5 , 3 , missed)
 
 		
 	

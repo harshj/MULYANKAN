@@ -7,11 +7,17 @@ from shutil import copy	#To make backup of results
 
 from data import get_data
 from result import get_result, analyze
+from constants import(
+                        PASSIVE_DATA_SIZE,
+                        BOOKLET_CODE_SIZE,
+                        NO_OF_QUES,
+                        SYS_ROOT,
+                      )
 
-#ROLL_SIZE = 13
 # questions: questions not to be evaluated.
-#NO_OF_QUESTIONS = 156
-def evaluate(questions = "" , NO_OF_QUESTIONS = 156 ):
+
+
+def evaluate(questions = "" , NO_OF_QUESTIONS = NO_OF_QUES):
 	errors = []
 	'''temp = []
 	for q in questions:
@@ -34,7 +40,7 @@ def evaluate(questions = "" , NO_OF_QUESTIONS = 156 ):
 		ws.write( i,j + 6,'Q%d'%(j+1) )
 	
 	try:
-		path = os.curdir + os.sep + 'system' + os.sep + 'data' + os.sep
+		path = SYS_ROOT + os.sep + 'system' + os.sep + 'data' + os.sep
 		f = open (path + 'response.txt' )
 	except IOError:
 		errors.append("File not found error!!!")
@@ -43,7 +49,7 @@ def evaluate(questions = "" , NO_OF_QUESTIONS = 156 ):
 	for line in f :
 	    i += 1
 	    j = 5
-	    data = line[84:]
+	    data = line[ PASSIVE_DATA_SIZE : ]
 	    roll_no , qpset , response = get_data(data)
 	    if qpset != '*':
 	    	correct , wrong , missed , invalid , score , stats = get_result(qpset , NO_OF_QUESTIONS , response , questions)
@@ -52,7 +58,7 @@ def evaluate(questions = "" , NO_OF_QUESTIONS = 156 ):
 	    	correct = "Invalid question " 
 	    	wrong = "paper set."
 	    	missed = " Booklet code is "
-	    	invalid = line[:22]
+	    	invalid = line[:BOOKLET_CODE_SIZE]
 	    	score = ""
 	    	correct_qp = 0
 		
@@ -63,6 +69,7 @@ def evaluate(questions = "" , NO_OF_QUESTIONS = 156 ):
 	    ws.write(i,4,invalid)
 	    ws.write(i , 5 , score)
 		
+		# Write stats only if the qpset is correct.
 	    if correct_qp:
 	    	for j in xrange(NO_OF_QUESTIONS):
 	    		ws.write( i , j + 6 , stats[j] )
@@ -75,7 +82,7 @@ def evaluate(questions = "" , NO_OF_QUESTIONS = 156 ):
 
 #show function returns a list of list which contains all the data of Result.xls
 def show(n):
-	path = os.curdir + os.sep + 'system' + os.sep + 'data' + os.sep + 'Result.xls'
+	path = SYS_ROOT + os.sep + 'system' + os.sep + 'data' + os.sep + 'Result.xls'
 	errors = []
 	if(os.path.exists(path)):
 		wb = xlrd.open_workbook(path)
@@ -96,6 +103,7 @@ def show(n):
 					
 				
 	else:
+		data = []
 		errors.append("File Not Found!!!")
 		success = False
 	
