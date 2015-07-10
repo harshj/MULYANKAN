@@ -115,7 +115,7 @@ def handle_student_info(student_info):
 	for i in xrange(temp_sh.ncols):
 		columns.append( temp_sh.cell_value(0,i) )
 	
-	for i in ['Application #' , 'Name' , "Father's Name" , "Mother's Name" , 'Address' , 'Contact No.']:	#Check for all required columns.
+	for i in ['Application #' , 'Name' , 'Gender', "Father's Name" , "Mother's Name" , 'Address' , 'Contact No.' , 'Program Code']:	#Check for all required columns.
 		if i not in columns:
 			errors.append("Data Insufficient!!!")
 			copy(path + "backup" + os.sep + "Student Information_backup.bak" , path + "Student Information.xls")	#Restore backedup file

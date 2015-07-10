@@ -3,11 +3,8 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 
 from summer_proj.forms import (
-							student_info_form , 
-							centre_info_form , 
 							result_eval_form , 
-							student_info_upload_form , 
-							centre_info_upload_form ,
+							centre_alloc_upload_form,
 							re_evaluate_form
 							)
 							
@@ -17,8 +14,7 @@ from system.handle_uploads import (
 								handle_centre_info ,
 								handle_student_info
 								)
-
-import system.student_application 
+ 
 import system.centre_info
 import system.roll_no_info
 import system.centre_allocator
@@ -30,92 +26,46 @@ import system.result_evaluator
 def home(request):
     return render( request , 'home' )
 
-def student_info(request):
-    success = False
-    upload_success = False
-    if request.method == 'POST':
-        form = student_info_form(request.POST)
-        upload_form = student_info_upload_form(request.POST, request.FILES)
-        
-        #If data is entered.
-        if form.is_valid():
-            name = request.POST['name']
-            fname = request.POST["father_name"]
-            mname = request.POST['mother_name']
-            address = request.POST['address']
-            contact = request.POST['contact']
-            flag,error =  system.student_application.save(name,fname,mname,address,contact)
-            if flag == True :
-                if len(error) == 0:
-                    success=True
-                    form = student_info_form
-                else:
-                    return HttpResponse("%d errors occured while saving.Please contact the site admin" %len(error))
-                
-		# If file is uploaded.
-       	elif upload_form.is_valid() :
-        	#return HttpResponse("In Upload.")
-			error = handle_student_info(request.FILES['student_info'])
-			#return HttpResponse("upload handled." + error[0])
-			if len(error) == 0:
-				upload_success = True
-
-    else:
-        form = student_info_form
-        upload_form = student_info_upload_form()
-    return render(request, 'student_info' , 
-    				{'form':form , 
-    				'upload_form' : upload_form , 
-    				'success':success , 
-    				'upload_success' : upload_success}
-    				)
-
-def centre_info(request):
-    success = False
-    upload_success = False
-    if request.method == 'POST' :
-        form = centre_info_form(request.POST)
-        upload_form = centre_info_upload_form(request.POST, request.FILES)
-
-		# If data is entered.
-        if form.is_valid():
-            cname = request.POST['center_name']
-            caddress = request.POST['center_address']
-            capacity = request.POST['capacity']
-            flag,error = system.centre_info.save(cname,caddress,capacity)
-            if(flag == True):
-                if(len(error) == 0):    
-                    success = True
-                else:
-                    return HttpResponse("%d errors occurred while saving. Please contact the site admin" %len(error))
-					
-		# If file is uploaded.
-        elif upload_form.is_valid() :
-        #	return HttpResponse("In Upload.")
-			error = handle_centre_info(request.FILES['centre_info'])
-			#return HttpResponse("upload handled." + error[0])
-			if len(error) == 0:
-				upload_success = True
-		
-    else:
-        form = centre_info_form()
-        upload_form = centre_info_upload_form()
-    return render( request , 'centre_info' , 
-    				{'form':form ,
-    				 'upload_form' : upload_form, 
-    				 'success':success , 
-    				 'upload_success' : upload_success} 
-    				 )
-
 def roll_no_info(request):
     data,success,errors = system.roll_no_info.show()
     
     return render(request , 'roll_no_info' , {'data':data , 'success':success , 'errors':errors})
 
 def centre_alloc(request):
-	success = system.centre_allocator.allocate()
-	return HttpResponseRedirect('/roll_no_info/')
-	#return render( request, 'roll_no_info' , {'alloc_success' : success} )
+	errors = []
+	if request.method == 'POST' :
+		upload_form = centre_alloc_upload_form(request.POST, request.FILES)
+
+        # If file is uploaded.
+		if upload_form.is_valid() :
+        #	return HttpResponse("In Upload.")
+			errors = handle_student_info(request.FILES['student_info'])				
+			error = handle_centre_info(request.FILES['centre_info'])
+			#return HttpResponse("upload handled." + error[0])
+			for e in error:
+				errors.append(e)
+				
+			if len(errors) == 0:
+				upload_success = True
+				success = system.centre_allocator.allocate()
+				
+				if(success):
+					return HttpResponseRedirect('/roll_no_info/')
+				else:
+					return HttpResponse("Errors occurred while allocating centres. Please contact the admin")
+			
+			else:
+				return HttpResponse("%d errors occurred while uploading. Please fix these errors\n 1. %s" , len(errors) , errors[0])
+		
+	else:
+		upload_form = centre_alloc_upload_form()
+	
+	return render( request , 'centre_alloc' , 
+    				{
+    				 'upload_form' : upload_form,   
+    				 'errors' : errors
+    				 }
+    			)
 
 def result_evaluator(request):
     errors = []

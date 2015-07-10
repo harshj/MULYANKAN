@@ -16,12 +16,15 @@ def show():
 		row = []
 		numbers = []
 		strings = []
+		
+		# The values read are float by default, we need to change them to int.
 		for i in xrange(0 , sh.ncols):
 			col_name = sh.cell_value(0,i)
-			if col_name in ["Application #" , "Allotted Roll No."] :
+			if col_name in ["Application #" , "Allotted Roll No." , "Program Code"] :
 				numbers.append(i)
 			else:
 				strings.append(i)
+				
 		for i in xrange(0,sh.nrows):
 			for j in xrange(0 , sh.ncols):
 				temp = sh.cell_value(i,j)

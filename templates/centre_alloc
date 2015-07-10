@@ -1,0 +1,34 @@
+<! Template for "centre_alloc">
+
+{% extends "base.html" %}
+
+{% block style %}
+    {% load static from staticfiles %}
+    <link href = {% static "/static/centre_alloc.css" %} type = "text/css" rel = "stylesheet" />
+{% endblock %}
+
+{% block title %}Centre Allocator{% endblock %}
+
+{% block content %}
+
+    <h3>
+		Centre Allocator
+    </h3>
+    
+    <p>
+	Please upload the appropriate files.
+    </p>
+    
+	
+	<form action=""  method = "POST" enctype="multipart/form-data" >
+		{% csrf_token %}
+		{{upload_form | linebreaksbr}}
+		<br>
+		<input type = "Submit" value="Submit" class='button_submit'>
+	</form>
+	
+		<! GET:for non sensitive info.,passive data
+           POST: for sensitive info.,updating data
+           get not suitable for large amount of data and images etc.>
+	
+{% endblock %}

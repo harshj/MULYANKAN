@@ -15,9 +15,6 @@
         Result Evaluator
     </h3>
     
-	{% if success %}
-		<font color="green" font-size="5">Success!!!</font>
-	{% endif %}
 
     <p>
 	Please upload the appropriate files.

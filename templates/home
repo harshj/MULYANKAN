@@ -16,11 +16,6 @@ Home
  
     <p>
 		<b>Result Evaluation System :</b><br><br>
-
-		{% if eval_success %}
-			<p style="color:green" class = 'success'>Result Evaluated Successfully!!!</p>
-		{% endif %}
-
 		
 		<a href="/generate_result/" class = 'button_small'>Generate New Results</a>
           
@@ -29,13 +24,6 @@ Home
 		
 		<b>Roll No. Generation and Centre Allocaion System:</b><br><br>
 
-		<a href="/student_info/" class = 'button_small'>Enter Student Information </a>
-
-		<a href="/centre_info/" class = 'button_small'>Enter Centre Info</a><br><br>
-
-		{% if alloc_success %}
-			<p style="color:green">Enrollment Numbers successfully generated!!!</p>
-		{% endif %}
 		<a href = "/centre_alloc/" class = 'button_large'>Allocate Centres and Generate Enrollment Numbers</a><br>
 	
 	    <a href = "/roll_no_info/" class = 'button_large'>Show Allotted Enrollment Numbers</a><br>

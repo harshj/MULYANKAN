@@ -1,5 +1,6 @@
 # Module to add a centre into the Centre Information.xls file
 # This module handles(saves/appends) the data entered in the centre_info form
+# Module no longer needed.
 
 import os
 import xlrd,xlwt

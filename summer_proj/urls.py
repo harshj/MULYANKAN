@@ -8,8 +8,6 @@ from summer_proj import views
 urlpatterns = patterns('',
 	url(r'^$', views.home),
 	url(r'home/$', views.home),     				#Home Page
-	url(r'student_info/$' , views.student_info),    #For entering student Info.
-	url(r'centre_info/$' , views.centre_info),      #For entering centre info.
 	url(r'centre_alloc/$' , views.centre_alloc),    #Link to generate random roll numbers and allocate centres.
 	url(r'roll_no_info/$' , views.roll_no_info),    #Views content of Roll No. Info.xls
 	url(r'generate_result/$' , views.result_evaluator),#To generate new results
