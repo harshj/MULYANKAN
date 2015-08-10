@@ -92,3 +92,5 @@ To deploy this system , the following modules are needed:
 
 After setting up the system, cd into the root directory of the system(which contains manage.py and this readme file) and 
 execute "python manage.py runserver" to deploy the system.
+
+NOTE:- YOU MIGHT WANT TO CHANGE THE SECRET_KEY IN 'SETTINGS.PY' 

@@ -30,7 +30,7 @@ Results
 		    
 		    {% else %}
 		    
-		        <tr>
+		        <tr class="{% cycle 'row1' 'row2' %}">
 			        {%for j in i %}		
 			        	<td>{{j}}</td>
 			        {% endfor %}
