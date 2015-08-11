@@ -1,11 +1,18 @@
 {% extends "base.html" %}
 
+{% block style %}
+    {% load static from staticfiles %}
+    <link href = {% static "/static/roll_no_info.css" %} type = "text/css" rel = "stylesheet" />
+{% endblock %}
+
 {% block title %}Roll No. Info.{% endblock %}
 
 {% block content %}
 	{% if success == False %}
 	<p stype=color:"red">An error has occurred.Please contact the site admin</p>
 	{% else %}
+		<h3>Roll Number Analysis</h3><br>
+		<div id="roll_info">
 		<table style="width:60%">
 		{% for i in data %}
 		    
@@ -30,7 +37,12 @@
 		
 		{% endfor %}
 		
-		</table>	
+		</table>
+		</div>
 	{% endif %}
-
+	
+	<div class="save">
+		<a href={% static "Roll Number Information.xls" %}><paper-icon-button icon="file-download"></paper-icon-button></a><br>
+	</div>
+	<br><br><br>
 {% endblock %}

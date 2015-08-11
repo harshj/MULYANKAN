@@ -8,11 +8,9 @@ h2{
 	text-align:center
 }
 
-p.base{
-    position : relative;
-    text-align : right; 
-    left : -20px;
-    font : bold italic 25px georgia;
+#base{
+    float: right;
+	margin: 1% 2% 1% 2%;
 }
 
 a{
@@ -119,6 +117,16 @@ th{
     
 }
 
+.row2 td{
+	background-color: #FFFF85;
+}
+
+.save{
+	float: right;
+	margin: 1% 2% 1% 2%;
+
+}
+
 .success{
     font : italic 15px georgia;
     color : green;
@@ -128,5 +136,7 @@ th{
     font : italic 15px georgia;
     color : red;
 }
+
+
 
 

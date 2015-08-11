@@ -2,8 +2,9 @@
 <html>
 	<head>
 	
-        {% load static from staticfiles %}
-		<link href = {% static "/static/base.css" %} type = "text/css" rel = "stylesheet" />
+        {% load staticfiles %}
+		<link href = {% static "base.css" %} type = "text/css" rel = "stylesheet" />
+		<link rel="import" href = {% static 'bower_components/paper-elements/paper-elements.html' %} />
 		{% block style %}{% endblock %}
 		
 		<title>
@@ -14,6 +15,7 @@
 	
 	<body>
 		
+		<a id="top"></a>
 		<h2>MULYANKAN</h2>
 		<hr width="1310" size="2" noshade>
 		{% block content %}
@@ -22,9 +24,10 @@
 
 		<br>
 		
-		<p class = 'base'>
-		    <a href = "/" class = 'base'>Home</a>
-        </p>
+		<div id = 'base'>
+			<a href="#top"><paper-icon-button icon="arrow-drop-up"></paper-icon-button></a><br>
+		    <a href = "/"><paper-icon-button icon="home"></paper-icon-button></a>
+        </div>
         
 		<hr width="1310" size="2" noshade>
 		
