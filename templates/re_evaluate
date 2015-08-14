@@ -11,7 +11,9 @@
 
 {% block content %}
 
-	<form action = "" method = "POST">
+	<h3>Re Evaluation Criteria</h3>
+
+	<form class = "form" action = "" method = "POST">
 		{% csrf_token %}
 		{{ form | linebreaks}}
 		<br>

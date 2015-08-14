@@ -15,14 +15,18 @@ from constants import (
 
 #Module to calculate result for each candidate and returns the correct# , wrong# , missed# , total score and student wise analysis of questions.
 def get_result(qpset , NO_OF_QUESTIONS , response , questions) :
-
+    return_values=[]
     path = SYS_ROOT + os.sep + 'system' + os.sep + 'data' + os.sep
     correct = wrong = missed = invalid = 0
     f1 = open(path + 'key.txt')
 
     key = f1.readline()
-    while key[0] != qpset :
+    while key and key[0] != qpset :
         key = f1.readline()
+	if not key:
+		return_values.append(False)
+		return return_values
+	
     key = key[1:NO_OF_QUESTIONS + 1]
     key = key.rstrip('\n\r')				#To remove trailing \r and \n 
     response = response.rstrip('\n\r')		#To remove trailing \r and \n
@@ -55,7 +59,13 @@ def get_result(qpset , NO_OF_QUESTIONS , response , questions) :
 
     score = CORRECT_MARKS * correct + INCORRECT_MARKS * wrong + INVALID_MARKS * invalid + MISSED_MARKS * missed
     f1.close()
-    return correct , wrong , missed , invalid , score , stats
+    return_values.append(correct)
+    return_values.append(wrong)
+    return_values.append(missed)
+    return_values.append(invalid)
+    return_values.append(score)
+    return_values.append(stats)
+    return return_values 
 	
 #Module to carry out quetion wise analysis of results.
 def analyze():

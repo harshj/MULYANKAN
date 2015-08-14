@@ -5,14 +5,15 @@ from django.http import HttpResponse, HttpResponseRedirect
 from summer_proj.forms import (
 							result_eval_form , 
 							centre_alloc_upload_form,
-							re_evaluate_form
+							re_evaluate_form,
+							roll_search_form,
 							)
 							
 from system.handle_uploads import (
 								handle_response , 
 								handle_key,
 								handle_centre_info ,
-								handle_student_info
+								handle_student_info ,
 								)
  
 import system.centre_info
@@ -93,7 +94,11 @@ def result_evaluator(request):
 					error = system.result_evaluator.evaluate()
 				
 				if len(error) != 0 :
-					return HttpResponse("%d error has occurred while evaluation. Please Contact the site admin!!!" %len(error))
+					if error[0][0] == "1":
+						errors.append(error[0])
+						return render(request, 'result_evaluator' , {'form' : form , 'errors' : errors})
+					else:
+						return HttpResponse("%d error has occurred while evaluation. Please Contact the site admin!!!" %len(error))
 					
 				else:
 					# redirect to display result page
@@ -101,7 +106,7 @@ def result_evaluator(request):
     
     else:
         form = result_eval_form()   
-    return render(request, 'result_evaluator' , {'form' : form , 'errors' : errors})
+    return render(request, 'result_evaluator' , {'form' : form })
 
 	
 def show_result(request):
@@ -139,3 +144,22 @@ def analysis(request):
 	data , success , errors = system.result_evaluator.show(1)
 	return render(request, 'show_analysis' , {'data' : data ,'success' : success ,'errors' : errors})
 	
+
+def roll_search(request):
+
+	info = []
+	if request.method == 'POST':
+		form = roll_search_form(request.POST)
+		
+		if form.is_valid():
+			#return HttpResponse("Success")
+			app_no = request.POST['application_no']
+			errors, info = system.centre_info.get_centre(app_no)
+			#return HttpResponse(info)
+			if len(errors) > 0:
+				return HttpResponse("%d errors have occurred. Please contact the site admin.", len(errors))
+			else:
+				return render(request , 'roll_search' , {'form' : form, 'info': info} )	
+			
+	form = roll_search_form
+	return render(request , 'roll_search' , {'form' : form} )

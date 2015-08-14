@@ -3,6 +3,7 @@
 {% block style %}
     {% load static from staticfiles %}
     <link href = {% static "/static/home.css" %} type = "text/css" rel = "stylesheet" />
+	<link rel="import" href={% static "js/center_info_form.js" %}>
 {% endblock %}
 
 {% block title %}
@@ -22,11 +23,13 @@ Home
 		<a href="/show_result/" class = 'button_small'>View Last Results</a><br><br>
          
 		
-		<b>Roll No. Generation and Centre Allocaion System:</b><br><br>
+		<b>Roll No. Generation and Centre Allocation System:</b><br><br>
 
 		<a href = "/centre_alloc/" class = 'button_large'>Allocate Centres and Generate Enrollment Numbers</a><br>
 	
 	    <a href = "/roll_no_info/" class = 'button_large'>Show Allotted Enrollment Numbers</a><br>
+	
+		<a href="/roll_search/" class= 'button_large'>Get Center Information by Application Number</a></br>
 	
 	</p>
 {% endblock %}

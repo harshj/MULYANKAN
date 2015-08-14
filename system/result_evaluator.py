@@ -44,7 +44,7 @@ def evaluate(questions = "" , NO_OF_QUESTIONS = NO_OF_QUES):
 		f = open (path + 'response.txt' )
 	except IOError:
 		errors.append("File not found error!!!")
-		return False,errors
+		return errors
 
 	for line in f :
 	    i += 1
@@ -52,7 +52,16 @@ def evaluate(questions = "" , NO_OF_QUESTIONS = NO_OF_QUES):
 	    data = line[ PASSIVE_DATA_SIZE : ]
 	    roll_no , qpset , response = get_data(data)
 	    if qpset != '*':
-	    	correct , wrong , missed , invalid , score , stats = get_result(qpset , NO_OF_QUESTIONS , response , questions)
+	    	return_values = get_result(qpset , NO_OF_QUESTIONS , response , questions)
+	    	if return_values[0] == False:
+	    		errors.append("1: A Question Paper set mentioned in response was not found in key. Please try again with the appropriate key.")
+	    		return errors
+	    	correct = return_values[0]
+	    	wrong = return_values[1]
+	    	missed = return_values[2]
+	    	invalid = return_values[3]
+	    	score = return_values[4]
+	    	stats = return_values[5]
 	    	correct_qp = 1
 	    else:
 	    	correct = "Invalid question " 

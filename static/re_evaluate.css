@@ -1,3 +1,9 @@
 *{
-    font : italic 20px georgia;
+    font : italic georgia;
+}
+
+h3{
+	font : italic bold 1.8em georgia ;
+    color: #005CE6;
+	text-align: center;
 }

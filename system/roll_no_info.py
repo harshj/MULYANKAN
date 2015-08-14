@@ -20,7 +20,7 @@ def show():
 		# The values read are float by default, we need to change them to int.
 		for i in xrange(0 , sh.ncols):
 			col_name = sh.cell_value(0,i)
-			if col_name in ["Application #" , "Allotted Roll No." , "Program Code"] :
+			if col_name in ["Application #" , "Allotted Roll No." , "Program Code" , "Centre Code" ] :
 				numbers.append(i)
 			else:
 				strings.append(i)

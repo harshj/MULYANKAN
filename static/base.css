@@ -68,7 +68,7 @@ a:hover{
     background-color : #FF6666;
     text-align : center;
     color : #29330A; 
-    margin-left : 100px;   
+    margin : 2% 0 4% 10%;   
 }
 
 a.button_small:hover {
@@ -77,6 +77,38 @@ a.button_small:hover {
 
 a.button_large:hover{
     background: #C2FFC2;
+}
+
+.form label{
+	display: inline-block;
+	width: auto;
+	font-size: 1em;	
+	margin: 1% 2% 1% 1%;
+}
+
+.form input:not(.button_submit){
+	float: right;
+	margin: 1% 50% 1% 0%;
+}
+
+.help_text{
+    color: grey;
+    font-size: .8em;
+	margin: 0% 0% 0% 2%;
+}
+
+.errorlist{
+	display: inline;
+	width: 10%;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.errorlist li{
+	display: inline;
+	color: red;
+	font-size: 0.8em;
 }
 
 .text_input{
@@ -94,11 +126,6 @@ a.button_large:hover{
 .text_input:focus{
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
     border: 1px 2px solid rgba(81, 203, 238, 1);
-}
-
-.help_text{
-    color:grey;
-    font-size:12px;
 }
 
 table, td {

@@ -91,7 +91,8 @@ def handle_student_info(student_info):
 	errors = []
 	global path
 	
-	move(path + "Student Information.xls", path + "backup" + os.sep + "Student Information.bak")	#Create backup file
+	if os.path.exists( path + "Student Information.xls" ):
+		move(path + "Student Information.xls", path + "backup" + os.sep + "Student Information.bak")	#Create backup file
 
 	try :
 		f = open(path + "Student Information.xls" , 'w')

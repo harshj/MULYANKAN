@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block style %}
+	{% load staticfiles %}
+	<link rel='stylesheet' href={% static "roll_search.css" %} />
+{% endblock %}
+
+{% block title %}
+	Search Roll Number
+{% endblock %}
+
+{% block content %}
+	
+	<h3>Enrollment Number Search</h3>
+	
+	{% if form %}
+	
+	<form class = "form" action=""  method = "POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		{{form}}
+		<br><br>
+		<input type = "Submit" value="Submit" class='button_submit'>
+	</form>
+	
+	{% endif %}
+	
+	{% if info %}
+			<table>
+				{% for data in info %}
+					{% if forloop.first %}
+					
+						<tr>
+							{% for i in data %}
+								<th>{{i}}</th>
+							{% endfor %}
+						</tr>
+					
+					{% else %}
+					
+						<tr>
+							{% for i in data %}
+								<td>{{i}}</td>
+							
+							{% empty %}
+								<td class = "fail">Application Number not found!!!</td>
+							
+							{% endfor %}
+						</tr>
+				
+					{% endif %}
+					
+				{% endfor %}
+			</table>
+	{% endif %}
+	
+	
+{% endblock %}
