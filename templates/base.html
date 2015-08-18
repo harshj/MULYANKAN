@@ -5,6 +5,7 @@
         {% load staticfiles %}
 		<link href = {% static "base.css" %} type = "text/css" rel = "stylesheet" />
 		<link rel="import" href = {% static 'bower_components/paper-elements/paper-elements.html' %} />
+		<script src={% static "bower_components/webcomponentsjs/webcomponents.min.js" %} ></script>
 		{% block style %}{% endblock %}
 		
 		<title>

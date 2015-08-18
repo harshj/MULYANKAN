@@ -20,8 +20,9 @@ import system.centre_info
 import system.roll_no_info
 import system.centre_allocator
 import system.result_evaluator
+from system.constants import SYS_ROOT
 
-#import os
+import os
 
 
 def home(request):
@@ -144,7 +145,27 @@ def analysis(request):
 	data , success , errors = system.result_evaluator.show(1)
 	return render(request, 'show_analysis' , {'data' : data ,'success' : success ,'errors' : errors})
 	
-
+def download(request, fname = ""):
+	path = SYS_ROOT + os.sep + 'system' + os.sep + 'data' + os.sep
+	
+	if fname == 'result':
+		fname = "Result.xls"
+	elif fname == 'centre':
+		fname = "Roll Number Information.xls"
+	else:
+		return HttpResponse("Invalid File Requested !!!")
+	
+	if os.path.exists(path + fname):
+		f = open(path + fname , 'rb')
+	else:
+		return HttpResponse("404: File not found")
+	
+	xls = f.read()
+	response = HttpResponse(xls , mimetype='application/ms-excel')
+	response['Content-Disposition'] = 'attachment; filename="%s"' %fname
+	return response
+	
+# View to search allotted roll no. and centre information via application number.
 def roll_search(request):
 
 	info = []

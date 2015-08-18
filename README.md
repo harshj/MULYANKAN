@@ -94,3 +94,12 @@ After setting up the system, cd into the root directory of the system(which cont
 execute "python manage.py runserver" to deploy the system.
 
 NOTE:- YOU MIGHT WANT TO CHANGE THE SECRET_KEY IN 'SETTINGS.PY' 
+
+#Deplyment Notes
+
+1. Change sys_root in constants.py.
+2. Chnage Debug and Template Debug to False in settings.py. 
+3. Add allowed hosts in settings.py.
+4. Add project root to sys.path in wsgi.py
+
+**** This website is best viewed in Google Chrome. ****	

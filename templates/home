@@ -3,7 +3,6 @@
 {% block style %}
     {% load static from staticfiles %}
     <link href = {% static "/static/home.css" %} type = "text/css" rel = "stylesheet" />
-	<link rel="import" href={% static "js/center_info_form.js" %}>
 {% endblock %}
 
 {% block title %}

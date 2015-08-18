@@ -46,7 +46,7 @@ Analysis
 	</div>
 	<br>
 	<div class="save">
-		<a href={% static "Result.xls" %}><paper-icon-button icon="file-download"></paper-icon-button></a><br>
+		<a href = "download/result" ><paper-icon-button icon="file-download"></paper-icon-button></a><br>
 	</div>
 	{% else %}
 	Some error has occurred!!!

@@ -14,7 +14,8 @@ urlpatterns = patterns('',
 	url(r'show_result/$' , views.show_result),      #To show the results.
 	url(r're_evaluate/$' , views.re_evaluate),		# To re-evaluate result based on questions r4emoved from evaluation
 	url(r'analysis/$' , views.analysis),			# To show question wise analysis.
-	url(r'roll_search/' , views.roll_search),		# To search roll number and center info. using application number.
+	url(r'roll_search/$' , views.roll_search),		# To search roll number and center info. using application number.
+	url(r'download/(?P<fname>[a-z]{6})/$' , views.download),
     #url(r'info/$' , views.info),
     # Examples:
     # url(r'^$', 'summer_proj.views.home', name='home'),

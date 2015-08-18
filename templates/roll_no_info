@@ -42,7 +42,7 @@
 	{% endif %}
 	
 	<div class="save">
-		<a href={% static "Roll Number Information.xls" %}><paper-icon-button icon="file-download"></paper-icon-button></a><br>
+		<a href = "download/centre" ><paper-icon-button icon="file-download"></paper-icon-button></a><br>
 	</div>
 	<br><br><br>
 {% endblock %}
