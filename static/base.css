@@ -9,8 +9,7 @@ h2{
 }
 
 #base{
-    float: right;
-	margin: 1% 2% 1% 2%;
+	margin: 1% 2% 1% 95%;
 }
 
 a{
@@ -47,7 +46,7 @@ a:hover{
 .button_large{
     display : block;
     height : 50px;
-    width : 300px ;
+    width : 300px;
     background : #FF6666;
     border: 2px solid rgba(33, 68, 72, 0.59);
     text-align: center;
@@ -133,7 +132,6 @@ table, td {
 }
 
 td{
-    display:block;
     padding : 3px;
 }
 
